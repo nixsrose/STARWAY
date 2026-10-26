@@ -1,0 +1,1829 @@
+{
+  "date": "2026-10-22",
+  "build": {
+    "build": "50ea87b15a4c",
+    "css": "6c96ca4109bd",
+    "version": 288
+  },
+  "conditions": {
+    "ship": "Scout",
+    "upgrades": 0,
+    "jumpPower": 6.55,
+    "gravity": 100,
+    "paces": [
+      10,
+      12,
+      14,
+      15.4
+    ],
+    "controller": "guide-following continuous steering with obstacle lookahead; real step(1/120); no rendering",
+    "limitations": [
+      "Scripted clears establish feasible routes, not novice success rates.",
+      "Timing sweep shifts all jumps together and does not measure each obstacle independently.",
+      "Built-in maps only; user local map overrides are outside this executor.",
+      "Actual novice comprehension and touch reaction require outside playtests."
+    ]
+  },
+  "cases": [
+    {
+      "stage": 1,
+      "pace": 10,
+      "lead": -0.08,
+      "state": "win",
+      "row": 218,
+      "time": 21.6,
+      "fuel": 92,
+      "reason": null,
+      "jumps": [
+        128.83
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 10,
+      "lead": -0.04,
+      "state": "win",
+      "row": 218,
+      "time": 21.6,
+      "fuel": 92,
+      "reason": null,
+      "jumps": [
+        128.42
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 10,
+      "lead": 0,
+      "state": "win",
+      "row": 218,
+      "time": 21.6,
+      "fuel": 92,
+      "reason": null,
+      "jumps": [
+        128.08
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 10,
+      "lead": 0.04,
+      "state": "win",
+      "row": 218,
+      "time": 21.6,
+      "fuel": 92,
+      "reason": null,
+      "jumps": [
+        127.67
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 10,
+      "lead": 0.08,
+      "state": "exploding",
+      "row": 132.83,
+      "time": 13.08,
+      "fuel": 86.4,
+      "reason": "장애물 충돌",
+      "jumps": [
+        127.25
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 10,
+      "lead": 0.12,
+      "state": "exploding",
+      "row": 132.83,
+      "time": 13.08,
+      "fuel": 86.4,
+      "reason": "장애물 충돌",
+      "jumps": [
+        126.83
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 10,
+      "lead": 0.16,
+      "state": "exploding",
+      "row": 132.83,
+      "time": 13.08,
+      "fuel": 86.4,
+      "reason": "장애물 충돌",
+      "jumps": [
+        126.42
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 10,
+      "lead": 0.2,
+      "state": "exploding",
+      "row": 132.83,
+      "time": 13.08,
+      "fuel": 86.4,
+      "reason": "장애물 충돌",
+      "jumps": [
+        126.08
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 10,
+      "lead": 0.24,
+      "state": "exploding",
+      "row": 132.83,
+      "time": 13.08,
+      "fuel": 86.4,
+      "reason": "장애물 충돌",
+      "jumps": [
+        125.67
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 10,
+      "lead": 0.28,
+      "state": "falling",
+      "row": 132.5,
+      "time": 13.05,
+      "fuel": 86.4,
+      "reason": "도로 이탈",
+      "jumps": [
+        125.25
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 10,
+      "lead": 0.32,
+      "state": "falling",
+      "row": 132.08,
+      "time": 13.01,
+      "fuel": 86.5,
+      "reason": "도로 이탈",
+      "jumps": [
+        70,
+        124.83
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 12,
+      "lead": -0.08,
+      "state": "win",
+      "row": 218.1,
+      "time": 18.01,
+      "fuel": 88.9,
+      "reason": null,
+      "jumps": [
+        129
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 12,
+      "lead": -0.04,
+      "state": "win",
+      "row": 218.1,
+      "time": 18.01,
+      "fuel": 88.9,
+      "reason": null,
+      "jumps": [
+        128.5
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 12,
+      "lead": 0,
+      "state": "win",
+      "row": 218.1,
+      "time": 18.01,
+      "fuel": 88.9,
+      "reason": null,
+      "jumps": [
+        128.1
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 12,
+      "lead": 0.04,
+      "state": "win",
+      "row": 218.1,
+      "time": 18.01,
+      "fuel": 88.9,
+      "reason": null,
+      "jumps": [
+        127.6
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 12,
+      "lead": 0.08,
+      "state": "win",
+      "row": 218.1,
+      "time": 18.01,
+      "fuel": 88.9,
+      "reason": null,
+      "jumps": [
+        127.1
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 12,
+      "lead": 0.12,
+      "state": "win",
+      "row": 218.1,
+      "time": 18.01,
+      "fuel": 88.9,
+      "reason": null,
+      "jumps": [
+        126.6
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 12,
+      "lead": 0.16,
+      "state": "exploding",
+      "row": 132.8,
+      "time": 10.9,
+      "fuel": 85,
+      "reason": "장애물 충돌",
+      "jumps": [
+        126.1
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 12,
+      "lead": 0.2,
+      "state": "exploding",
+      "row": 132.8,
+      "time": 10.9,
+      "fuel": 85,
+      "reason": "장애물 충돌",
+      "jumps": [
+        125.7
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 12,
+      "lead": 0.24,
+      "state": "exploding",
+      "row": 132.8,
+      "time": 10.9,
+      "fuel": 85,
+      "reason": "장애물 충돌",
+      "jumps": [
+        125.2
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 12,
+      "lead": 0.28,
+      "state": "exploding",
+      "row": 132.8,
+      "time": 10.9,
+      "fuel": 85,
+      "reason": "장애물 충돌",
+      "jumps": [
+        70,
+        124.7
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 12,
+      "lead": 0.32,
+      "state": "exploding",
+      "row": 132.8,
+      "time": 10.9,
+      "fuel": 85,
+      "reason": "장애물 충돌",
+      "jumps": [
+        70,
+        124.2
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 14,
+      "lead": -0.08,
+      "state": "falling",
+      "row": 129.17,
+      "time": 9.08,
+      "fuel": 84.3,
+      "reason": "도로 이탈",
+      "jumps": []
+    },
+    {
+      "stage": 1,
+      "pace": 14,
+      "lead": -0.04,
+      "state": "win",
+      "row": 218.07,
+      "time": 15.43,
+      "fuel": 85.5,
+      "reason": null,
+      "jumps": [
+        128.58
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 14,
+      "lead": 0,
+      "state": "win",
+      "row": 218.07,
+      "time": 15.43,
+      "fuel": 85.5,
+      "reason": null,
+      "jumps": [
+        128.12
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 14,
+      "lead": 0.04,
+      "state": "win",
+      "row": 218.07,
+      "time": 15.43,
+      "fuel": 85.5,
+      "reason": null,
+      "jumps": [
+        127.53
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 14,
+      "lead": 0.08,
+      "state": "win",
+      "row": 218.07,
+      "time": 15.43,
+      "fuel": 85.5,
+      "reason": null,
+      "jumps": [
+        126.95
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 14,
+      "lead": 0.12,
+      "state": "win",
+      "row": 218.07,
+      "time": 15.43,
+      "fuel": 85.5,
+      "reason": null,
+      "jumps": [
+        126.37
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 14,
+      "lead": 0.16,
+      "state": "win",
+      "row": 218.07,
+      "time": 15.43,
+      "fuel": 85.5,
+      "reason": null,
+      "jumps": [
+        125.78
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 14,
+      "lead": 0.2,
+      "state": "win",
+      "row": 218.07,
+      "time": 15.43,
+      "fuel": 85.5,
+      "reason": null,
+      "jumps": [
+        125.32
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 14,
+      "lead": 0.24,
+      "state": "exploding",
+      "row": 132.9,
+      "time": 9.35,
+      "fuel": 83.4,
+      "reason": "장애물 충돌",
+      "jumps": [
+        70.02,
+        124.73
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 14,
+      "lead": 0.28,
+      "state": "exploding",
+      "row": 132.9,
+      "time": 9.35,
+      "fuel": 83.4,
+      "reason": "장애물 충돌",
+      "jumps": [
+        70.02,
+        124.15
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 14,
+      "lead": 0.32,
+      "state": "exploding",
+      "row": 132.9,
+      "time": 9.35,
+      "fuel": 83.4,
+      "reason": "장애물 충돌",
+      "jumps": [
+        66.63,
+        123.57
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 15.4,
+      "lead": -0.08,
+      "state": "falling",
+      "row": 129.18,
+      "time": 8.26,
+      "fuel": 83.2,
+      "reason": "도로 이탈",
+      "jumps": []
+    },
+    {
+      "stage": 1,
+      "pace": 15.4,
+      "lead": -0.04,
+      "state": "win",
+      "row": 218.11,
+      "time": 14.03,
+      "fuel": 82.9,
+      "reason": null,
+      "jumps": [
+        128.66
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 15.4,
+      "lead": 0,
+      "state": "win",
+      "row": 218.11,
+      "time": 14.03,
+      "fuel": 82.9,
+      "reason": null,
+      "jumps": [
+        128.02
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 15.4,
+      "lead": 0.04,
+      "state": "win",
+      "row": 218.11,
+      "time": 14.03,
+      "fuel": 82.9,
+      "reason": null,
+      "jumps": [
+        127.51
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 15.4,
+      "lead": 0.08,
+      "state": "win",
+      "row": 218.11,
+      "time": 14.03,
+      "fuel": 82.9,
+      "reason": null,
+      "jumps": [
+        126.87
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 15.4,
+      "lead": 0.12,
+      "state": "win",
+      "row": 218.11,
+      "time": 14.03,
+      "fuel": 82.9,
+      "reason": null,
+      "jumps": [
+        126.23
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 15.4,
+      "lead": 0.16,
+      "state": "win",
+      "row": 218.11,
+      "time": 14.03,
+      "fuel": 82.9,
+      "reason": null,
+      "jumps": [
+        125.58
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 15.4,
+      "lead": 0.2,
+      "state": "win",
+      "row": 218.11,
+      "time": 14.03,
+      "fuel": 82.9,
+      "reason": null,
+      "jumps": [
+        70.02,
+        124.94
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 15.4,
+      "lead": 0.24,
+      "state": "win",
+      "row": 218.11,
+      "time": 14.03,
+      "fuel": 82.9,
+      "reason": null,
+      "jumps": [
+        70.02,
+        124.43
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 15.4,
+      "lead": 0.28,
+      "state": "exploding",
+      "row": 132.9,
+      "time": 8.5,
+      "fuel": 82.3,
+      "reason": "장애물 충돌",
+      "jumps": [
+        66.81,
+        123.79
+      ]
+    },
+    {
+      "stage": 1,
+      "pace": 15.4,
+      "lead": 0.32,
+      "state": "exploding",
+      "row": 132.9,
+      "time": 8.5,
+      "fuel": 82.3,
+      "reason": "장애물 충돌",
+      "jumps": [
+        66.55,
+        123.15
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 10,
+      "lead": -0.08,
+      "state": "win",
+      "row": 372.08,
+      "time": 37.01,
+      "fuel": 72.8,
+      "reason": null,
+      "jumps": [
+        91.83,
+        301.83
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 10,
+      "lead": -0.04,
+      "state": "win",
+      "row": 372.08,
+      "time": 37.01,
+      "fuel": 72.8,
+      "reason": null,
+      "jumps": [
+        91.42,
+        301.42
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 10,
+      "lead": 0,
+      "state": "win",
+      "row": 372.08,
+      "time": 37.01,
+      "fuel": 72.8,
+      "reason": null,
+      "jumps": [
+        91.08,
+        301
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 10,
+      "lead": 0.04,
+      "state": "win",
+      "row": 372.08,
+      "time": 37.01,
+      "fuel": 72.8,
+      "reason": null,
+      "jumps": [
+        90.67,
+        300.67
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 10,
+      "lead": 0.08,
+      "state": "exploding",
+      "row": 305.83,
+      "time": 30.38,
+      "fuel": 63.6,
+      "reason": "장애물 충돌",
+      "jumps": [
+        90.25,
+        300.25
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 10,
+      "lead": 0.12,
+      "state": "exploding",
+      "row": 305.83,
+      "time": 30.38,
+      "fuel": 63.6,
+      "reason": "장애물 충돌",
+      "jumps": [
+        89.83,
+        299.83
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 10,
+      "lead": 0.16,
+      "state": "exploding",
+      "row": 305.83,
+      "time": 30.38,
+      "fuel": 63.6,
+      "reason": "장애물 충돌",
+      "jumps": [
+        89.42,
+        299.42
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 10,
+      "lead": 0.2,
+      "state": "exploding",
+      "row": 305.83,
+      "time": 30.38,
+      "fuel": 63.6,
+      "reason": "장애물 충돌",
+      "jumps": [
+        89.08,
+        299
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 10,
+      "lead": 0.24,
+      "state": "exploding",
+      "row": 305.83,
+      "time": 30.38,
+      "fuel": 63.6,
+      "reason": "장애물 충돌",
+      "jumps": [
+        88.67,
+        298.67
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 10,
+      "lead": 0.28,
+      "state": "falling",
+      "row": 95.5,
+      "time": 9.35,
+      "fuel": 82,
+      "reason": "도로 이탈",
+      "jumps": [
+        88.25
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 10,
+      "lead": 0.32,
+      "state": "falling",
+      "row": 95.08,
+      "time": 9.31,
+      "fuel": 82.1,
+      "reason": "도로 이탈",
+      "jumps": [
+        87.83
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 12,
+      "lead": -0.08,
+      "state": "falling",
+      "row": 302.2,
+      "time": 25.02,
+      "fuel": 58.4,
+      "reason": "도로 이탈",
+      "jumps": [
+        92
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 12,
+      "lead": -0.04,
+      "state": "win",
+      "row": 372,
+      "time": 30.83,
+      "fuel": 65.6,
+      "reason": null,
+      "jumps": [
+        91.5,
+        301.5
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 12,
+      "lead": 0,
+      "state": "win",
+      "row": 372,
+      "time": 30.83,
+      "fuel": 65.6,
+      "reason": null,
+      "jumps": [
+        91.1,
+        301.1
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 12,
+      "lead": 0.04,
+      "state": "win",
+      "row": 372,
+      "time": 30.83,
+      "fuel": 65.6,
+      "reason": null,
+      "jumps": [
+        90.6,
+        300.6
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 12,
+      "lead": 0.08,
+      "state": "win",
+      "row": 372,
+      "time": 30.83,
+      "fuel": 65.6,
+      "reason": null,
+      "jumps": [
+        90.1,
+        300.1
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 12,
+      "lead": 0.12,
+      "state": "win",
+      "row": 372,
+      "time": 30.83,
+      "fuel": 65.6,
+      "reason": null,
+      "jumps": [
+        89.6,
+        299.6
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 12,
+      "lead": 0.16,
+      "state": "exploding",
+      "row": 305.8,
+      "time": 25.32,
+      "fuel": 57.6,
+      "reason": "장애물 충돌",
+      "jumps": [
+        89.1,
+        299.1
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 12,
+      "lead": 0.2,
+      "state": "exploding",
+      "row": 305.8,
+      "time": 25.32,
+      "fuel": 57.6,
+      "reason": "장애물 충돌",
+      "jumps": [
+        88.7,
+        298.7
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 12,
+      "lead": 0.24,
+      "state": "exploding",
+      "row": 305.8,
+      "time": 25.32,
+      "fuel": 57.6,
+      "reason": "장애물 충돌",
+      "jumps": [
+        88.2,
+        298.2
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 12,
+      "lead": 0.28,
+      "state": "exploding",
+      "row": 305.8,
+      "time": 25.32,
+      "fuel": 57.6,
+      "reason": "장애물 충돌",
+      "jumps": [
+        87.7,
+        297.7
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 12,
+      "lead": 0.32,
+      "state": "exploding",
+      "row": 305.8,
+      "time": 25.32,
+      "fuel": 57.6,
+      "reason": "장애물 충돌",
+      "jumps": [
+        87.2,
+        297.2
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 14,
+      "lead": -0.08,
+      "state": "falling",
+      "row": 92.18,
+      "time": 6.44,
+      "fuel": 78.9,
+      "reason": "도로 이탈",
+      "jumps": []
+    },
+    {
+      "stage": 2,
+      "pace": 14,
+      "lead": -0.04,
+      "state": "win",
+      "row": 372.07,
+      "time": 26.43,
+      "fuel": 57.4,
+      "reason": null,
+      "jumps": [
+        91.6,
+        301.6
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 14,
+      "lead": 0,
+      "state": "win",
+      "row": 372.07,
+      "time": 26.43,
+      "fuel": 57.4,
+      "reason": null,
+      "jumps": [
+        91.02,
+        301.02
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 14,
+      "lead": 0.04,
+      "state": "win",
+      "row": 372.07,
+      "time": 26.43,
+      "fuel": 57.4,
+      "reason": null,
+      "jumps": [
+        90.55,
+        300.55
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 14,
+      "lead": 0.08,
+      "state": "win",
+      "row": 372.07,
+      "time": 26.43,
+      "fuel": 57.4,
+      "reason": null,
+      "jumps": [
+        89.97,
+        299.97
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 14,
+      "lead": 0.12,
+      "state": "win",
+      "row": 372.07,
+      "time": 26.43,
+      "fuel": 57.4,
+      "reason": null,
+      "jumps": [
+        89.38,
+        299.38
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 14,
+      "lead": 0.16,
+      "state": "win",
+      "row": 372.07,
+      "time": 26.43,
+      "fuel": 57.4,
+      "reason": null,
+      "jumps": [
+        88.8,
+        298.8
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 14,
+      "lead": 0.2,
+      "state": "win",
+      "row": 372.07,
+      "time": 26.43,
+      "fuel": 57.4,
+      "reason": null,
+      "jumps": [
+        88.22,
+        298.22
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 14,
+      "lead": 0.24,
+      "state": "exploding",
+      "row": 305.8,
+      "time": 21.7,
+      "fuel": 50.9,
+      "reason": "장애물 충돌",
+      "jumps": [
+        87.75,
+        297.75
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 14,
+      "lead": 0.28,
+      "state": "exploding",
+      "row": 305.8,
+      "time": 21.7,
+      "fuel": 50.9,
+      "reason": "장애물 충돌",
+      "jumps": [
+        87.17,
+        297.17
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 14,
+      "lead": 0.32,
+      "state": "exploding",
+      "row": 305.8,
+      "time": 21.7,
+      "fuel": 50.9,
+      "reason": "장애물 충돌",
+      "jumps": [
+        55.55,
+        86.58,
+        296.58
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 15.4,
+      "lead": -0.08,
+      "state": "falling",
+      "row": 92.22,
+      "time": 5.86,
+      "fuel": 77.4,
+      "reason": "도로 이탈",
+      "jumps": []
+    },
+    {
+      "stage": 2,
+      "pace": 15.4,
+      "lead": -0.04,
+      "state": "win",
+      "row": 372.11,
+      "time": 24.03,
+      "fuel": 51.3,
+      "reason": null,
+      "jumps": [
+        91.7,
+        301.66
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 15.4,
+      "lead": 0,
+      "state": "win",
+      "row": 372.11,
+      "time": 24.03,
+      "fuel": 51.3,
+      "reason": null,
+      "jumps": [
+        91.06,
+        301.02
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 15.4,
+      "lead": 0.04,
+      "state": "win",
+      "row": 372.11,
+      "time": 24.03,
+      "fuel": 51.3,
+      "reason": null,
+      "jumps": [
+        90.42,
+        300.5
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 15.4,
+      "lead": 0.08,
+      "state": "win",
+      "row": 372.11,
+      "time": 24.03,
+      "fuel": 51.3,
+      "reason": null,
+      "jumps": [
+        89.78,
+        299.86
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 15.4,
+      "lead": 0.12,
+      "state": "win",
+      "row": 372.11,
+      "time": 24.03,
+      "fuel": 51.3,
+      "reason": null,
+      "jumps": [
+        89.27,
+        299.22
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 15.4,
+      "lead": 0.16,
+      "state": "win",
+      "row": 372.11,
+      "time": 24.03,
+      "fuel": 51.3,
+      "reason": null,
+      "jumps": [
+        88.62,
+        298.58
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 15.4,
+      "lead": 0.2,
+      "state": "win",
+      "row": 372.11,
+      "time": 24.03,
+      "fuel": 51.3,
+      "reason": null,
+      "jumps": [
+        87.98,
+        297.94
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 15.4,
+      "lead": 0.24,
+      "state": "win",
+      "row": 372.11,
+      "time": 24.03,
+      "fuel": 51.3,
+      "reason": null,
+      "jumps": [
+        87.34,
+        297.42
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 15.4,
+      "lead": 0.28,
+      "state": "exploding",
+      "row": 305.89,
+      "time": 19.73,
+      "fuel": 45.9,
+      "reason": "장애물 충돌",
+      "jumps": [
+        86.7,
+        296.78
+      ]
+    },
+    {
+      "stage": 2,
+      "pace": 15.4,
+      "lead": 0.32,
+      "state": "exploding",
+      "row": 305.89,
+      "time": 19.73,
+      "fuel": 45.9,
+      "reason": "장애물 충돌",
+      "jumps": [
+        86.19,
+        296.14
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 10,
+      "lead": -0.08,
+      "state": "win",
+      "row": 236,
+      "time": 23.4,
+      "fuel": 89.2,
+      "reason": null,
+      "jumps": [
+        61.83,
+        119.83,
+        183.83
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 10,
+      "lead": -0.04,
+      "state": "win",
+      "row": 236,
+      "time": 23.4,
+      "fuel": 89.2,
+      "reason": null,
+      "jumps": [
+        61.42,
+        119.42,
+        183.42
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 10,
+      "lead": 0,
+      "state": "win",
+      "row": 236,
+      "time": 23.4,
+      "fuel": 89.2,
+      "reason": null,
+      "jumps": [
+        61,
+        119.08,
+        183
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 10,
+      "lead": 0.04,
+      "state": "win",
+      "row": 236,
+      "time": 23.4,
+      "fuel": 89.2,
+      "reason": null,
+      "jumps": [
+        60.67,
+        118.67,
+        182.67
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 10,
+      "lead": 0.08,
+      "state": "exploding",
+      "row": 65.83,
+      "time": 6.38,
+      "fuel": 87.7,
+      "reason": "장애물 충돌",
+      "jumps": [
+        60.25
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 10,
+      "lead": 0.12,
+      "state": "exploding",
+      "row": 65.83,
+      "time": 6.38,
+      "fuel": 87.7,
+      "reason": "장애물 충돌",
+      "jumps": [
+        59.83
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 10,
+      "lead": 0.16,
+      "state": "exploding",
+      "row": 65.83,
+      "time": 6.38,
+      "fuel": 87.7,
+      "reason": "장애물 충돌",
+      "jumps": [
+        59.42
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 10,
+      "lead": 0.2,
+      "state": "exploding",
+      "row": 65.83,
+      "time": 6.38,
+      "fuel": 87.7,
+      "reason": "장애물 충돌",
+      "jumps": [
+        59
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 10,
+      "lead": 0.24,
+      "state": "exploding",
+      "row": 65.83,
+      "time": 6.38,
+      "fuel": 87.7,
+      "reason": "장애물 충돌",
+      "jumps": [
+        58.67
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 10,
+      "lead": 0.28,
+      "state": "falling",
+      "row": 65.5,
+      "time": 6.35,
+      "fuel": 87.8,
+      "reason": "도로 이탈",
+      "jumps": [
+        58.25
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 10,
+      "lead": 0.32,
+      "state": "falling",
+      "row": 65.08,
+      "time": 6.31,
+      "fuel": 87.9,
+      "reason": "도로 이탈",
+      "jumps": [
+        57.83
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 12,
+      "lead": -0.08,
+      "state": "falling",
+      "row": 62.2,
+      "time": 5.02,
+      "fuel": 87.2,
+      "reason": "도로 이탈",
+      "jumps": []
+    },
+    {
+      "stage": 3,
+      "pace": 12,
+      "lead": -0.04,
+      "state": "win",
+      "row": 236.1,
+      "time": 19.51,
+      "fuel": 72.4,
+      "reason": null,
+      "jumps": [
+        61.5,
+        119.5,
+        183.5
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 12,
+      "lead": 0,
+      "state": "win",
+      "row": 236.1,
+      "time": 19.51,
+      "fuel": 72.4,
+      "reason": null,
+      "jumps": [
+        61,
+        119.1,
+        183.1
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 12,
+      "lead": 0.04,
+      "state": "win",
+      "row": 236.1,
+      "time": 19.51,
+      "fuel": 72.4,
+      "reason": null,
+      "jumps": [
+        60.6,
+        118.6,
+        182.6
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 12,
+      "lead": 0.08,
+      "state": "win",
+      "row": 236.1,
+      "time": 19.51,
+      "fuel": 72.4,
+      "reason": null,
+      "jumps": [
+        60.1,
+        118.1,
+        182.1
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 12,
+      "lead": 0.12,
+      "state": "win",
+      "row": 236.1,
+      "time": 19.51,
+      "fuel": 72.4,
+      "reason": null,
+      "jumps": [
+        59.6,
+        117.6,
+        181.6
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 12,
+      "lead": 0.16,
+      "state": "exploding",
+      "row": 65.8,
+      "time": 5.32,
+      "fuel": 86.5,
+      "reason": "장애물 충돌",
+      "jumps": [
+        59.1
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 12,
+      "lead": 0.2,
+      "state": "exploding",
+      "row": 65.8,
+      "time": 5.32,
+      "fuel": 86.5,
+      "reason": "장애물 충돌",
+      "jumps": [
+        58.6
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 12,
+      "lead": 0.24,
+      "state": "exploding",
+      "row": 65.8,
+      "time": 5.32,
+      "fuel": 86.5,
+      "reason": "장애물 충돌",
+      "jumps": [
+        58.2
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 12,
+      "lead": 0.28,
+      "state": "exploding",
+      "row": 65.8,
+      "time": 5.32,
+      "fuel": 86.5,
+      "reason": "장애물 충돌",
+      "jumps": [
+        57.7
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 12,
+      "lead": 0.32,
+      "state": "exploding",
+      "row": 65.8,
+      "time": 5.32,
+      "fuel": 86.5,
+      "reason": "장애물 충돌",
+      "jumps": [
+        57.2
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 14,
+      "lead": -0.08,
+      "state": "falling",
+      "row": 62.2,
+      "time": 4.3,
+      "fuel": 85.9,
+      "reason": "도로 이탈",
+      "jumps": []
+    },
+    {
+      "stage": 3,
+      "pace": 14,
+      "lead": -0.04,
+      "state": "win",
+      "row": 236.03,
+      "time": 16.72,
+      "fuel": 67.2,
+      "reason": null,
+      "jumps": [
+        61.62,
+        119.6,
+        183.65
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 14,
+      "lead": 0,
+      "state": "win",
+      "row": 236.03,
+      "time": 16.72,
+      "fuel": 67.2,
+      "reason": null,
+      "jumps": [
+        61.03,
+        119.02,
+        183.07
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 14,
+      "lead": 0.04,
+      "state": "win",
+      "row": 236.03,
+      "time": 16.72,
+      "fuel": 67.2,
+      "reason": null,
+      "jumps": [
+        60.45,
+        118.55,
+        182.48
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 14,
+      "lead": 0.08,
+      "state": "win",
+      "row": 236.03,
+      "time": 16.72,
+      "fuel": 67.2,
+      "reason": null,
+      "jumps": [
+        59.98,
+        117.97,
+        181.9
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 14,
+      "lead": 0.12,
+      "state": "win",
+      "row": 236.03,
+      "time": 16.72,
+      "fuel": 67.2,
+      "reason": null,
+      "jumps": [
+        59.4,
+        117.38,
+        181.43
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 14,
+      "lead": 0.16,
+      "state": "win",
+      "row": 236.03,
+      "time": 16.72,
+      "fuel": 67.2,
+      "reason": null,
+      "jumps": [
+        58.82,
+        116.8,
+        180.85
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 14,
+      "lead": 0.2,
+      "state": "win",
+      "row": 236.03,
+      "time": 16.72,
+      "fuel": 67.2,
+      "reason": null,
+      "jumps": [
+        58.23,
+        116.22,
+        180.27
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 14,
+      "lead": 0.24,
+      "state": "exploding",
+      "row": 65.82,
+      "time": 4.56,
+      "fuel": 85.1,
+      "reason": "장애물 충돌",
+      "jumps": [
+        57.65
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 14,
+      "lead": 0.28,
+      "state": "exploding",
+      "row": 65.82,
+      "time": 4.56,
+      "fuel": 85.1,
+      "reason": "장애물 충돌",
+      "jumps": [
+        57.18
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 14,
+      "lead": 0.32,
+      "state": "exploding",
+      "row": 65.82,
+      "time": 4.56,
+      "fuel": 85.1,
+      "reason": "장애물 충돌",
+      "jumps": [
+        56.6
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 15.4,
+      "lead": -0.08,
+      "state": "falling",
+      "row": 62.19,
+      "time": 3.91,
+      "fuel": 84.9,
+      "reason": "도로 이탈",
+      "jumps": []
+    },
+    {
+      "stage": 3,
+      "pace": 15.4,
+      "lead": -0.04,
+      "state": "win",
+      "row": 236.08,
+      "time": 15.2,
+      "fuel": 63.4,
+      "reason": null,
+      "jumps": [
+        61.67,
+        119.68,
+        183.72
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 15.4,
+      "lead": 0,
+      "state": "win",
+      "row": 236.08,
+      "time": 15.2,
+      "fuel": 63.4,
+      "reason": null,
+      "jumps": [
+        61.03,
+        119.04,
+        183.08
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 15.4,
+      "lead": 0.04,
+      "state": "win",
+      "row": 236.08,
+      "time": 15.2,
+      "fuel": 63.4,
+      "reason": null,
+      "jumps": [
+        60.39,
+        118.4,
+        182.44
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 15.4,
+      "lead": 0.08,
+      "state": "win",
+      "row": 236.08,
+      "time": 15.2,
+      "fuel": 63.4,
+      "reason": null,
+      "jumps": [
+        59.88,
+        117.88,
+        181.79
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 15.4,
+      "lead": 0.12,
+      "state": "win",
+      "row": 236.08,
+      "time": 15.2,
+      "fuel": 63.4,
+      "reason": null,
+      "jumps": [
+        59.24,
+        117.24,
+        181.15
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 15.4,
+      "lead": 0.16,
+      "state": "win",
+      "row": 236.08,
+      "time": 15.2,
+      "fuel": 63.4,
+      "reason": null,
+      "jumps": [
+        58.59,
+        116.6,
+        180.64
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 15.4,
+      "lead": 0.2,
+      "state": "win",
+      "row": 236.08,
+      "time": 15.2,
+      "fuel": 63.4,
+      "reason": null,
+      "jumps": [
+        57.95,
+        115.96,
+        180
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 15.4,
+      "lead": 0.24,
+      "state": "win",
+      "row": 236.08,
+      "time": 15.2,
+      "fuel": 63.4,
+      "reason": null,
+      "jumps": [
+        57.31,
+        115.32,
+        179.36
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 15.4,
+      "lead": 0.28,
+      "state": "exploding",
+      "row": 65.91,
+      "time": 4.15,
+      "fuel": 84,
+      "reason": "장애물 충돌",
+      "jumps": [
+        56.8
+      ]
+    },
+    {
+      "stage": 3,
+      "pace": 15.4,
+      "lead": 0.32,
+      "state": "exploding",
+      "row": 65.91,
+      "time": 4.15,
+      "fuel": 84,
+      "reason": "장애물 충돌",
+      "jumps": [
+        56.16
+      ]
+    }
+  ]
+}

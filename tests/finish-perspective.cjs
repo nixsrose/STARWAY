@@ -1,0 +1,10 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
+const noop=()=>{},saved={},ctx=new Proxy({createLinearGradient:()=>({addColorStop:noop}),createRadialGradient:()=>({addColorStop:noop})},{get:(o,k)=>o[k]||noop});
+function boot(){const els={},el=()=>({style:{},children:[],setAttribute:noop,classList:{add:noop,remove:noop,toggle:noop},addEventListener:noop,appendChild(c){this.children.push(c)},getContext:()=>ctx});const b={document:{getElementById:id=>els[id]??(els[id]=el()),querySelectorAll:()=>[],createElement:el,addEventListener:noop},innerWidth:390,innerHeight:844,devicePixelRatio:1,addEventListener:noop,localStorage:{getItem:k=>saved[k]??null,setItem:(k,v)=>saved[k]=v,removeItem:k=>delete saved[k]},requestAnimationFrame:noop,setTimeout:noop,clearTimeout:noop,performance:{now:()=>100},Path2D:function(){},console};vm.createContext(b);vm.runInContext(fs.readFileSync('dist/'+fs.readFileSync('dist/index.html','utf8').match(/<script src="([^"]+)"/)[1],'utf8'),b);return {b,els,run:s=>vm.runInContext(s,b)}}
+
+const {b,run}=boot();
+for(const width of [320,390,760]){b.width=width;run('W=width;H=900;mode="story";level=0;STORY_COURSES[0]=emptyEditorMap(100);STORY_COURSES[0].finish={row:70,lane:3,type:"road"};beginRun(true)');let previousSize=0,previousAlpha=0;
+ for(const distance of [75,65,50,35,20,10,3]){b.distance=distance;const m=run('z=70.5-distance;globalThis.projection=proj(0,70.5,1.65);finishSignPresentation(projection[2])');const roadWidth=run('proj(.5,70.5)[0]-proj(-.5,70.5)[0]');assert.ok(Math.abs(m.size*4.2/roadWidth-1.428)<1e-8);assert.ok(m.size>previousSize);assert.ok(m.alpha>=previousAlpha);assert.ok(m.glow<m.size);previousSize=m.size;previousAlpha=m.alpha;run('drawFinishHologram()');}
+}
+assert.equal(run('finishSignPresentation(1).alpha'),0);assert.equal(run('finishSignPresentation(30).alpha'),1);
+console.log('PASS fixed world width on cover/main sizes, natural near/far projection, gradual visibility, distance-scaled glow/stroke, hologram render');

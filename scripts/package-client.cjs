@@ -1,0 +1,17 @@
+const fs=require('fs'),crypto=require('crypto');
+const code=fs.readFileSync('shared/finish.mjs','utf8').replace(/export /g,'')+'\n;\n'+fs.readFileSync('shared/background.mjs','utf8').replace('export function','function')+'\n;\n'+['storage-codec','stages','game','story-data','expansion','visuals','monetization','cockpit','surfaces','patterns','endless','editor','gravity','creator','editor-background','editor-paint','presentation','flight-audio','resource-feedback','retry-feedback','completion-feedback','endless-cues','backup','bgm-tracks','bgm','performance','shop-experience','startup','developer-mode','ghost','medals','cosmetics','ship-preview-gpu','ship-mesh','ship-tricks','ship-landing','ship-tunnel-clip','badges','lobby','result-presentation','story-selection','settings-panel','banner-placement','flight-guide','course-readability','finish-marker','danger-marker','failure-cues','ship-upgrades','quests','notifications','run-summary','challenge-templates','challenges','challenge-editor','challenge-rewards','challenge-settings','star-flight','passing-planet','editor-course-rules','no-jump-zones','hazard-tunnels','editor-map-check','editor-rectangle','editor-pickers','flight-diagnostics','flight-localization','progress-localization','editor-localization','hangar-localization','editor-title-guard','retry-route-preview','random-coins','speed-feedback','speed-pad-editor','endless-story-segments','challenge-map-backup','release-story-maps','filming-mode'].map(f=>fs.readFileSync('dist/'+f+'.js','utf8')).join('\n;\n')+'\n;draw();startLaunch();\n';
+const hash=crypto.createHash('sha256').update(code).digest('hex').slice(0,12);
+for(const f of fs.readdirSync('dist'))if(/^starway-[a-f0-9]+\.js$/.test(f))fs.unlinkSync('dist/'+f);
+const name='starway-'+hash+'.js';fs.writeFileSync('dist/'+name,code);
+let html=fs.readFileSync('dist/index.html','utf8');
+html=html.replace(/<script src="[^"]+"[^>]*><\/script>/g,'');
+const cssHash=crypto.createHash('sha256').update(fs.readFileSync('dist/cockpit.css')).digest('hex').slice(0,12);
+const previousVersion=JSON.parse(fs.readFileSync('dist/version.json','utf8'));
+const changed=previousVersion.build!==hash||previousVersion.css!==cssHash;
+const version=previousVersion.version?previousVersion.version+(changed?1:0):190;
+html=html.replace(/(<small id="gameVersion"[^>]*>)[^<]*(<\/small>)/,'$1v0.'+version+'$2');
+html=html.replace(/cockpit\.css\?v=[^"]+/, 'cockpit.css?v='+cssHash);
+html=html.replace('</html>','<script src="'+name+'" onerror="document.getElementById(\'bootMessage\').textContent=\'불러오지 못했습니다. 새로고침해 주세요.\'"></script></html>');
+fs.writeFileSync('dist/index.html',html);
+fs.writeFileSync('dist/version.json',JSON.stringify({build:hash,css:cssHash,version}));
+console.log('Client bundle generated:',name);

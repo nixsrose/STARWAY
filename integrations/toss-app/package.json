@@ -1,0 +1,1 @@
+{"name":"starway-toss-test","private":true,"type":"module","scripts":{"prepare:web":"node prepare.mjs","build":"node prepare.mjs && vite build && ait build","build:web":"node prepare.mjs && vite build","dev":"vite --host 0.0.0.0"},"dependencies":{"@apps-in-toss/web-framework":"3.8.0"},"devDependencies":{"vite":"7.1.12","typescript":"5.9.3"}}

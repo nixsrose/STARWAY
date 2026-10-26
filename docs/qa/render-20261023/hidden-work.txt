@@ -1,0 +1,2 @@
+{"check":"60 UI refreshes with populated hidden editor/menu","beforeTextVisits":360600,"afterTextVisits":600,"reductionPercent":99.83,"note":"Deterministic work-count fixture; not device FPS."}
+PASS visible flight labels, hidden panel omission, ready state and fresh editor/pause translation

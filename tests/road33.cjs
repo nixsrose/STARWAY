@@ -1,0 +1,9 @@
+const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
+const noop=()=>{},ctx=new Proxy({createLinearGradient:()=>({addColorStop:noop}),createRadialGradient:()=>({addColorStop:noop})},{get:(o,k)=>o[k]||noop});
+const el=()=>({style:{},setAttribute:noop,classList:{add:noop,remove:noop,toggle:noop},addEventListener:noop,appendChild:noop,getContext:()=>ctx});
+let els={},saved={},timers=[];
+const b={document:{getElementById:id=>els[id]??(els[id]=el()),querySelectorAll:()=>[],createElement:el,addEventListener:noop},innerWidth:390,innerHeight:844,devicePixelRatio:1,addEventListener:noop,localStorage:{getItem:k=>saved[k]||null,setItem:(k,v)=>saved[k]=v},requestAnimationFrame:noop,setTimeout:fn=>(timers.push(fn),timers.length),clearTimeout:noop,performance:{now:()=>100},Path2D:function(){},console};
+vm.createContext(b);for(const f of ['stages','game','story-data','expansion','visuals','monetization','cockpit','surfaces','patterns','endless','editor','gravity'])vm.runInContext(fs.readFileSync('dist/'+f+'.js','utf8'),b);
+
+vm.runInContext(`{mode='story';data.unlocked=17;level=8;beginRun(true);const course=STORY_COURSES[8];if(course.reference.indexOf('296051.mp4')<0||course.tunnelCenters[237].length!==3||!course.roadPaint[154].includes('electricBlue'))throw Error('reference structure');let jumps=0;for(let f=0;f<5000&&state==='play';f++){const lane=course.guide[Math.min(trackLength-1,Math.floor(z))];keys.left=x>lane-roadCenterLane()+.06;keys.right=x<lane-roadCenterLane()-.06;if(grounded&&rows[Math.floor(z)+2]?.every(v=>v===0)){jump();jumps++}step(1/120)}if(state!=='win'||jumps!==5)throw Error('3-3 traversal');beginRun();if(state!=='ready'||speed!==0)throw Error('manual launch');}`,b);
+console.log('PASS: Road 3-3 reference layout, five jump gaps, alternating route, final triple tunnel and stationary retry');

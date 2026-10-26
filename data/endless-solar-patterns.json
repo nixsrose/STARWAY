@@ -1,0 +1,91 @@
+{
+  "patterns": [
+    {
+      "id": "P33",
+      "name_ko": "황금 격자와 좁은 청록 터널",
+      "family": "checker_tube_neck",
+      "source_video": "296078.mp4",
+      "source_stages": [
+        "4-3"
+      ],
+      "topology_rule": "황금 격자와 좁은 청록 터널"
+    },
+    {
+      "id": "P34",
+      "name_ko": "두 색상 레일의 분리와 좌우 합류",
+      "family": "color_switch_rails",
+      "source_video": "296076.mp4",
+      "source_stages": [
+        "4-1"
+      ],
+      "topology_rule": "두 색상 레일의 분리와 좌우 합류"
+    },
+    {
+      "id": "P35",
+      "name_ko": "터널 출구와 높은 창 발판",
+      "family": "tube_plate_window",
+      "source_video": "296077.mp4",
+      "source_stages": [
+        "4-2"
+      ],
+      "topology_rule": "터널 출구와 높은 창 발판"
+    },
+    {
+      "id": "P36",
+      "name_ko": "청록 사각 창과 황금 병렬 레일",
+      "family": "cyan_window_parallel",
+      "source_video": "296078.mp4",
+      "source_stages": [
+        "4-3"
+      ],
+      "topology_rule": "청록 사각 창과 황금 병렬 레일"
+    },
+    {
+      "id": "P37",
+      "name_ko": "다섯 터널과 초록 띠",
+      "family": "five_tube_gate",
+      "source_video": "296077.mp4",
+      "source_stages": [
+        "4-2"
+      ],
+      "topology_rule": "다섯 터널과 초록 띠"
+    },
+    {
+      "id": "P38",
+      "name_ko": "쌍터널과 측면 블록 통로",
+      "family": "paired_tube_channel",
+      "source_video": "296077.mp4",
+      "source_stages": [
+        "4-2"
+      ],
+      "topology_rule": "쌍터널과 측면 블록 통로"
+    },
+    {
+      "id": "P39",
+      "name_ko": "좁은 격자 지그재그와 돌출 길",
+      "family": "checker_zigzag",
+      "source_video": "296078.mp4",
+      "source_stages": [
+        "4-3"
+      ],
+      "topology_rule": "좁은 격자 지그재그와 돌출 길"
+    },
+    {
+      "id": "P40",
+      "name_ko": "구멍이 있는 높은 베이지 발판",
+      "family": "raised_plate_aperture",
+      "source_video": "296078.mp4",
+      "source_stages": [
+        "4-3"
+      ],
+      "topology_rule": "구멍이 있는 높은 베이지 발판"
+    }
+  ],
+  "principles": [
+    "12개 스토리의 폭·틈·터널·색상 통계를 사용한다.",
+    "원본 스테이지 연결 대신 새 좌표와 길이를 생성한다.",
+    "착지 후 정렬 시간, 터널 종료 후 점프 여유를 유지한다.",
+    "초반 조작 학습, 중반 복합 구간, 이후 폭·틈의 압박을 증가시킨다.",
+    "연료는 안전한 착지 지점 또는 합류 지점에 한 칸으로 배치한다."
+  ]
+}

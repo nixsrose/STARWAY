@@ -1,0 +1,9 @@
+const fs=require('fs'),vm=require('vm'),{createCanvas,Path2D}=require('@napi-rs/canvas');
+const main=createCanvas(760,900),els={},noop=()=>{};function el(){return{style:{},classList:{add:noop,remove:noop,toggle:noop},setAttribute:noop,appendChild:noop,addEventListener:noop,getContext:()=>createCanvas(600,340).getContext('2d')}}
+const b={document:{getElementById:id=>id==='game'?main:els[id]??(els[id]=el()),querySelectorAll:()=>[],createElement:tag=>tag==='canvas'?Object.assign(createCanvas(400,300),{style:{},setAttribute:noop}):el(),addEventListener:noop},innerWidth:760,innerHeight:900,devicePixelRatio:1,addEventListener:noop,localStorage:{getItem:()=>null,setItem:noop},requestAnimationFrame:noop,setTimeout:noop,clearTimeout:noop,performance:{now:()=>100},Path2D,console};vm.createContext(b);vm.runInContext(fs.readFileSync('dist/'+fs.readFileSync('dist/index.html','utf8').match(/<script src="([^\"]+)"/)[1],'utf8'),b);
+
+
+
+const assert=require('node:assert/strict');const run=s=>vm.runInContext(s,b);const pixels=()=>Buffer.from(main.getContext('2d').getImageData(0,0,main.width,main.height).data);
+run("mode='story';level=0;z=0;x=0;globalThis.starwayPixelRatioCap=2;globalThis.matchMedia=()=>({matches:true});ctx.clearRect(0,0,W,H);drawDepthStars()");const still=pixels();run('z=100;ctx.clearRect(0,0,W,H);drawDepthStars()');assert.deepEqual(still,pixels(),'reduced motion must freeze parallax');run('matchMedia=()=>({matches:false});z=0;ctx.clearRect(0,0,W,H);drawDepthStars()');const moving=pixels();run('z=100;ctx.clearRect(0,0,W,H);drawDepthStars()');assert.notDeepEqual(moving,pixels());
+for(let level=0;level<6;level++){b.L=level;run("level=L;beginRun(true);state='play';z=20;draw()");assert.equal(run('chapterSceneryPilot()'),true);}run("level=6");assert.equal(run('chapterSceneryPilot()'),false);console.log('PASS: all six pilot courses render, later chapters excluded, star parallax and reduced-motion freeze');

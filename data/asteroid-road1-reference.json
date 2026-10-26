@@ -1,0 +1,86 @@
+{
+  "source": "296146.mp4",
+  "duration_seconds": 28.544,
+  "course": "6-1",
+  "sampling": "2s overview and0–24s at1s",
+  "note": "Sequence and lane shapes adapted to seven-lane engine. Exact source distances cannot be recovered from video. All tunnel centers remain fixed; crimson remains reserved for hazards.",
+  "segments": [
+    {
+      "video_seconds": [
+        0,
+        2
+      ],
+      "rows": [
+        0,
+        28
+      ],
+      "feature": "narrow yellow start and raised step"
+    },
+    {
+      "video_seconds": [
+        3,
+        5
+      ],
+      "rows": [
+        28,
+        80
+      ],
+      "feature": "parallel yellow lanes, white staggered blocks, right bypass and gap"
+    },
+    {
+      "video_seconds": [
+        6,
+        8
+      ],
+      "rows": [
+        80,
+        148
+      ],
+      "feature": "yellow merge, green straight tubes, white pillars"
+    },
+    {
+      "video_seconds": [
+        9,
+        13
+      ],
+      "rows": [
+        148,
+        220
+      ],
+      "feature": "orange multiple rails, blue connector, white blocks and gap"
+    },
+    {
+      "video_seconds": [
+        14,
+        20
+      ],
+      "rows": [
+        220,
+        336
+      ],
+      "feature": "white rail transition, green split rails and repeated breaks"
+    },
+    {
+      "video_seconds": [
+        21,
+        24
+      ],
+      "rows": [
+        336,
+        450
+      ],
+      "feature": "yellow and blue split rails, raised blue landing"
+    },
+    {
+      "video_seconds": [
+        25,
+        27
+      ],
+      "rows": [
+        450,
+        480
+      ],
+      "feature": "green twin tunnels and finish"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
+const noop=()=>{};let reduced=false,lines=0;
+const b={state:'play',z:2,rows:[],speed:24,W:390,H:620,document:{hidden:false},matchMedia:()=>({matches:reduced}),ctx:{save:noop,restore:noop,fillRect:noop,beginPath:noop,moveTo:noop,lineTo:()=>lines++,stroke:noop}};
+vm.createContext(b);vm.runInContext(fs.readFileSync('dist/star-flight.js','utf8'),b);const run=s=>vm.runInContext(s,b);
+run('drawFlightStars()');const initial=run('flightStars[1].depth');b.z+=1;run('drawFlightStars()');assert.ok(run('flightStars[1].depth')<initial);assert.ok(lines>0);
+const depth=run('flightStars[1].depth');b.state='pause';b.z+=1;run('drawFlightStars()');assert.equal(run('flightStars[1].depth'),depth);
+b.state='play';b.z+=100;run('drawFlightStars()');assert.equal(run('flightStars[1].depth'),depth);
+reduced=true;b.z+=1;run('drawFlightStars()');assert.equal(run('flightStars[1].depth'),depth);reduced=false;
+b.starwayPixelRatioCap=1;lines=0;b.z+=1;run('drawFlightStars()');assert.equal(lines,0);
+run('starFlightZ=0;starFlightRows=rows;flightStars.forEach(s=>s.depth=5)');b.z=1;run('advanceFlightStars()');const one=run('flightStars[1].depth');run('starFlightZ=0;flightStars.forEach(s=>s.depth=5)');for(let i=1;i<=60;i++){b.z=i/60;run('advanceFlightStars()');}assert.ok(Math.abs(run('flightStars[1].depth')-one)<1e-10);
+for(let i=0;i<1000;i++){b.z+=1;run('drawFlightStars()');}assert.equal(run('flightStars.length'),120);assert.ok(run('flightStars.every(s=>s.depth>=1&&s.depth<=9)'));
+console.log('PASS moving parallax, pause, teleport, reduced motion, power saving, frame-rate independence and bounded particle pool');

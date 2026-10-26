@@ -1,0 +1,26 @@
+{
+  "source": "starway-before-reset.json",
+  "storyStages": [
+    "1-1",
+    "1-2",
+    "1-3",
+    "2-1",
+    "2-2",
+    "2-3",
+    "3-2",
+    "3-3",
+    "4-1",
+    "4-2",
+    "4-3",
+    "5-1",
+    "5-2",
+    "7-2"
+  ],
+  "challengeMaps": [
+    "sprint",
+    "reserve",
+    "precision"
+  ],
+  "reserveSource": "연료 생존 · 마지막 항로.json",
+  "note": "Only map data embedded. Browser-local overrides remain higher priority."
+}

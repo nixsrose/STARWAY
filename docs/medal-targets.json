@@ -1,0 +1,93 @@
+{
+  "targets": [
+    {
+      "gold": 10.5,
+      "silver": 13
+    },
+    {
+      "gold": 18,
+      "silver": 22
+    },
+    {
+      "gold": 11.5,
+      "silver": 14
+    },
+    {
+      "gold": 16.5,
+      "silver": 21.0
+    },
+    {
+      "gold": 25.5,
+      "silver": 27.5
+    },
+    {
+      "gold": 12.5,
+      "silver": 14.5
+    },
+    {
+      "gold": 11.5,
+      "silver": 14.5
+    },
+    {
+      "gold": 16.5,
+      "silver": 21.0
+    },
+    {
+      "gold": 12.0,
+      "silver": 15.5
+    },
+    {
+      "gold": 15.0,
+      "silver": 19.0
+    },
+    {
+      "gold": 37.5,
+      "silver": 39.5
+    },
+    {
+      "gold": 34,
+      "silver": 42
+    },
+    {
+      "gold": 19.0,
+      "silver": 24.5
+    },
+    {
+      "gold": 24.5,
+      "silver": 31.0
+    },
+    {
+      "gold": 24.5,
+      "silver": 31.0
+    },
+    {
+      "gold": 23.5,
+      "silver": 30.0
+    },
+    {
+      "gold": 24.5,
+      "silver": 31.0
+    },
+    {
+      "gold": 24.5,
+      "silver": 31.0
+    },
+    {
+      "gold": 24.5,
+      "silver": 31.0
+    },
+    {
+      "gold": 24.5,
+      "silver": 31.0
+    },
+    {
+      "gold": 21.0,
+      "silver": 27.0
+    }
+  ],
+  "calibration": "docs/medal-calibration.json",
+  "provisional": [
+    "4-3"
+  ],
+  "note": "4-3 is a user-authored replacement; its thresholds are provisional because the existing scripted route cannot complete it. Other thresholds have a successful scripted traversal under the gold time. Preserve the original first-three targets."
+}

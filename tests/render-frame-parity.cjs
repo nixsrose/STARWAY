@@ -1,0 +1,10 @@
+const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict'),{createCanvas,Path2D}=require('@napi-rs/canvas');
+const noop=()=>{},main=createCanvas(390,844),els={};
+function el(){let context;return{style:{},classList:{add:noop,remove:noop,toggle:noop},setAttribute:noop,appendChild:noop,addEventListener:noop,getContext:()=>context??(context=createCanvas(600,340).getContext('2d'))}}
+const b={document:{getElementById:id=>id==='game'?main:els[id]??(els[id]=el()),querySelectorAll:()=>[],createElement:tag=>tag==='canvas'?Object.assign(createCanvas(400,300),{style:{},setAttribute:noop}):el(),addEventListener:noop},innerWidth:390,innerHeight:844,devicePixelRatio:1,addEventListener:noop,localStorage:{getItem:()=>null,setItem:noop},requestAnimationFrame:noop,setTimeout:noop,clearTimeout:noop,performance:{now:()=>100},Path2D,console};
+let seed=12345;b.Math=Object.create(Math);b.Math.random=()=>((seed=Math.imul(seed,1664525)+1013904223>>>0)/4294967296);vm.createContext(b);const html=fs.readFileSync('dist/index.html','utf8'),bundle=html.match(/<script src="([^"]+)"/)[1];const before=process.hrtime.bigint();vm.runInContext(fs.readFileSync(process.env.STARWAY_BENCH_BUNDLE||'dist/'+bundle,'utf8'),b);const bootMs=Number(process.hrtime.bigint()-before)/1e6;
+const run=s=>vm.runInContext(s,b),hashes=[];
+for(const stage of [3,13])for(const row of [2,40,100]){b.stage=stage;b.row=row;run("mode='story';data.unlocked=29;level=stage;beginRun(true);state='play';z=row;speed=15;throttle=15;draw()");assert.equal(run('level'),stage);hashes.push(require('crypto').createHash('sha256').update(main.getContext('2d').getImageData(0,0,main.width,main.height).data).digest('hex'));}
+if(process.env.STARWAY_PIXEL_REPORT)fs.writeFileSync(process.env.STARWAY_PIXEL_REPORT,JSON.stringify(hashes));
+if(!process.env.STARWAY_PIXEL_REPORT)assert.deepEqual(hashes,JSON.parse(fs.readFileSync(process.env.STARWAY_PIXEL_REFERENCE||'tests/fixtures/render-337-hashes.json','utf8')),'pixels changed');
+console.log('PASS six exact frame hashes: 2-1 / 5-2 rows 2,40,100');

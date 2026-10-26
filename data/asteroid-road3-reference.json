@@ -1,0 +1,105 @@
+{
+  "video": "296147.mp4",
+  "sections": [
+    {
+      "start": 0,
+      "end": 50,
+      "type": "single",
+      "name": "갈색·복숭아색 외길",
+      "side": 3
+    },
+    {
+      "start": 50,
+      "end": 80,
+      "type": "grid",
+      "name": "구멍 난 복숭아 격자",
+      "side": 3
+    },
+    {
+      "start": 80,
+      "end": 122,
+      "type": "islands",
+      "name": "연속 점프와 보라 발판",
+      "side": 3
+    },
+    {
+      "start": 122,
+      "end": 150,
+      "type": "grid",
+      "name": "청록색 구멍 격자",
+      "side": 3
+    },
+    {
+      "start": 150,
+      "end": 170,
+      "type": "tunnel",
+      "name": "초록 직선 세 터널",
+      "side": 3
+    },
+    {
+      "start": 170,
+      "end": 190,
+      "type": "hazard",
+      "name": "청록 도로와 진홍 위험칸",
+      "side": 3
+    },
+    {
+      "start": 190,
+      "end": 222,
+      "type": "crossroads",
+      "name": "중앙에서 왼쪽 분기",
+      "side": 3
+    },
+    {
+      "start": 222,
+      "end": 288,
+      "type": "split",
+      "name": "좌우 외길과 초록 발판",
+      "side": 3
+    },
+    {
+      "start": 288,
+      "end": 322,
+      "type": "single",
+      "name": "분홍 합류와 중앙 외길",
+      "side": 3
+    },
+    {
+      "start": 322,
+      "end": 346,
+      "type": "box_channel",
+      "name": "보라 벽 사이 오른쪽 분기",
+      "side": 3
+    },
+    {
+      "start": 346,
+      "end": 394,
+      "type": "islands",
+      "name": "보라 쌍레일 연속 점프",
+      "side": 3
+    },
+    {
+      "start": 394,
+      "end": 430,
+      "type": "crossroads",
+      "name": "보라 합류 발판",
+      "side": 3
+    },
+    {
+      "start": 430,
+      "end": 480,
+      "type": "single",
+      "name": "복숭아·갈색 마지막 외길",
+      "side": 3
+    },
+    {
+      "start": 480,
+      "end": 500,
+      "type": "tunnel",
+      "name": "초록 도착 터널",
+      "side": 3
+    }
+  ],
+  "gravityObservation": "Original HUD 400 vs previous500; engine gravity16",
+  "notes": "7열 500행으로 영상의 순서·분기·구멍·색상을 재구성. 정확한 치수는 영상으로 확정할 수 없어 점프 도달거리 기준 조정."
+}

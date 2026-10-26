@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>STARWAY</title>
+<script>
+const game=new URL('./dist/',window.location.href);
+game.search=window.location.search;
+game.hash=window.location.hash;
+window.location.replace(game.href);
+</script>
+<meta http-equiv="refresh" content="0;url=./dist/">
+</head>
+<body><a href="./dist/">STARWAY 게임 시작</a></body>
+</html>

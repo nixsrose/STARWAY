@@ -1,0 +1,9 @@
+# Quest, notification and result localization — 2026-10-23
+
+Added EN/JA/ZH phrases for daily/lifetime quest goals, tier and progress labels, claim/claim-all outcomes, reset rules, notification new/read counts and empty states, all badge names/conditions, and accessibility labels. Whole sentence templates preserve numeric values and native sentence order. Quest and notification dialogs now participate in the existing source-text cache and attribute localization outside the overlay. Source strings remain available for Korean fallback and language changes.
+
+Result quest names and new badge names use translated display text. Medal target sentences now have language-specific wording; the final English completion message correctly says 30 courses. Existing prices, reward amounts, IDs, reset schedule, read state and navigation behavior are unchanged. Added wrapping rules for translated labels within the established mobile layout.
+
+Validation: build and git diff --check passed. Tests passed: progress-localization, quests, quest-claim-all, notifications, result-report, run-summary, hangar-localization, startup-language. Template tests cover all three target languages, numeric preservation, all badge names/conditions and Korean fallback. Browser QA: English quests and claim-all increased the sample balance by 160; notification count updated, mark-all-read and Read tab worked; Japanese result fit 390×780 and linked to quests; Chinese lifetime tiers rendered at 749×780. English result fit 390×780. Development-only fixtures are excluded from Worker assets. Screenshots: qa/inbox-localized-20261023.png and qa/report-localized-20261023.png.
+
+Remaining localization scope includes challenge content, editor/gameplay guidance and detailed diagnostics. This update does not claim complete game-wide localization.

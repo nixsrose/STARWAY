@@ -1,0 +1,70 @@
+{
+  "mean": 31.621421612037036,
+  "worst": [
+    {
+      "stage": "1-2",
+      "row": 2,
+      "ms": 73.01745275,
+      "parts": {
+        "drawStageScenery": 27.701569000259042,
+        "drawRoadSurfaces": 87.45473299967125,
+        "drawBoxSurfaces": 31.47212699847296,
+        "drawTunnelFrames": 0.383094999473542,
+        "drawWorldCoins": 8.170678999274969
+      }
+    },
+    {
+      "stage": "6-1",
+      "row": 100,
+      "ms": 72.06897691666667,
+      "parts": {
+        "drawStageScenery": 14.72892300086096,
+        "drawRoadSurfaces": 110.40094600059092,
+        "drawBoxSurfaces": 33.402729000430554,
+        "drawTunnelFrames": 176.66432400094345,
+        "drawWorldCoins": 4.607618999667466
+      }
+    },
+    {
+      "stage": "1-1",
+      "row": 2,
+      "ms": 71.38028116666666,
+      "parts": {
+        "drawRoadSurfaces": 149.55154899973422,
+        "drawBoxSurfaces": 40.91664299927652,
+        "drawTunnelFrames": 0.3075440009124577,
+        "drawWorldCoins": 12.819549998734146
+      }
+    },
+    {
+      "stage": "4-2",
+      "row": 2,
+      "ms": 57.327702833333326,
+      "parts": {
+        "drawStageScenery": 15.192755999974906,
+        "drawRoadSurfaces": 83.04952900065109,
+        "drawBoxSurfaces": 31.52579400036484,
+        "drawTunnelFrames": 83.30754900164902,
+        "drawWorldCoins": 2.112150999251753
+      }
+    },
+    {
+      "stage": "5-3",
+      "row": 100,
+      "ms": 53.45790491666667,
+      "parts": {
+        "drawStageScenery": 13.622440999839455,
+        "drawRoadSurfaces": 108.28613700065762,
+        "drawBoxSurfaces": 16.45807500043884,
+        "drawTunnelFrames": 97.60395400132984,
+        "drawWorldCoins": 5.677463001105934
+      }
+    }
+  ],
+  "parts": {
+    "drawRoadSurfaces": 6.049718722208679,
+    "drawBoxSurfaces": 1.5827599194392359,
+    "drawTunnelFrames": 0.9653751481518461,
+    "drawWorldCoins": 0.43206585092961547
+  }
+}

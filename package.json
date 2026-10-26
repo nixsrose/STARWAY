@@ -1,0 +1,1 @@
+{"name":"starway-runner","version":"0.197.0","private":true,"scripts":{"build":"node scripts/package-client.cjs && node scripts/build-community.cjs","dev":"node scripts/preview.cjs"}}

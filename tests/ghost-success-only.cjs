@@ -1,0 +1,15 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
+const saved={},el={setAttribute(){}};
+const b={localStorage:{getItem:k=>saved[k]??null,setItem:(k,v)=>saved[k]=v},$:()=>el,tr:x=>x,skins:[{}],STORY_COURSES:[{}],level:0,mode:'story',editorTesting:false,time:0,x:0,y:0,z:2,vy:0,grounded:true,state:'menu',data:{skin:0,storyTimes:{0:{best:5}}},beginRun(){b.state='play';b.time=0},step(){},finish(win){b.state=win?'win':'dead'},drawShipAndEffects(){}};
+vm.createContext(b);vm.runInContext(fs.readFileSync('dist/ghost.js','utf8'),b);
+const run=s=>vm.runInContext(s,b);
+run('beginRun();time=10;finish(false)');assert.equal(Object.keys(saved).length,0);
+run('beginRun();time=10;finish(true)');const key=run('ghostKey');assert.equal(JSON.parse(saved[key]).completed,true);assert.equal(JSON.parse(saved[key]).best,10);
+run('beginRun()');assert.equal(run('ghostReplay.best'),10);
+run('time=4;finish(false)');assert.equal(JSON.parse(saved[key]).best,10);
+run('beginRun();time=12;finish(true)');assert.equal(JSON.parse(saved[key]).best,10);
+run('beginRun();time=8;finish(true)');assert.equal(JSON.parse(saved[key]).best,8);
+const legacy=JSON.parse(saved[key]);delete legacy.completed;saved[key]=JSON.stringify(legacy);run('beginRun()');assert.equal(run('ghostReplay'),null);
+legacy.completed=false;saved[key]=JSON.stringify(legacy);run('beginRun()');assert.equal(run('ghostReplay'),null);
+run('editorTesting=true;beginRun();time=3;finish(true)');assert.equal(JSON.parse(saved[key]).completed,false);
+console.log('PASS ghost: success-only recording/replay, failed and slower runs preserve best, first successful recording despite older PB, legacy/unverified rejected, editor excluded');

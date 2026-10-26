@@ -1,0 +1,6 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';
+const worker=await import('data:text/javascript;base64,'+Buffer.from(fs.readFileSync('worker/index.mjs','utf8').replace("import {normalizeBackground} from '../shared/background.mjs';",fs.readFileSync('shared/background.mjs','utf8').replace('export function','function')).replace("import {normalizeFinish,mapFinishZ,mapFinishReached,flightContacts,normalizeMapExtras,hazardTunnelRoofAt} from '../shared/finish.mjs';",fs.readFileSync('shared/finish.mjs','utf8').replace(/export /g,'')).replace("import {ASSETS} from './assets.mjs';",'const ASSETS={};')).toString('base64'));
+for(const gravity of [50,100,150,200,300,500]){const map=worker.validateMap({title:'Gravity test',gravityUnit:'coefficient',gravity,tiles:Array.from({length:64},()=>[0,0,1,1,1,0,0])});assert.equal(map.gravity,gravity);assert.equal(map.gravityUnit,'coefficient');}
+for(const gravity of [0,75,250,400,501])assert.throws(()=>worker.validateMap({title:'Invalid',gravityUnit:'coefficient',gravity,tiles:Array.from({length:64},()=>[0,0,1,1,1,0,0])}));
+assert.equal(worker.validateMap({title:'Legacy',gravity:18,tiles:Array.from({length:64},()=>[0,0,1,1,1,0,0])}).gravity,100);
+console.log('PASS server accepts six gravity values, rejects other values, keeps legacy 18 -> 100');

@@ -1,0 +1,75 @@
+{
+  "source": "296145.mp4",
+  "duration_seconds": 37.827,
+  "course": "5-3",
+  "sampling": "2s overview, 5–16s and20–35s at1s",
+  "note": "Video order and visible geometry adapted to seven lanes and the 500-row editor cap. Original distances cannot be measured exactly from video. Ordinary red-colored source tunnels use gold here so crimson stays reserved for lethal surfaces.",
+  "segments": [
+    {
+      "video_seconds": [
+        0,
+        4
+      ],
+      "rows": [
+        0,
+        66
+      ],
+      "feature": "narrow sand start, stepped widening green checker"
+    },
+    {
+      "video_seconds": [
+        5,
+        11
+      ],
+      "rows": [
+        66,
+        138
+      ],
+      "feature": "long straight three-rail tunnels, raised cross connector"
+    },
+    {
+      "video_seconds": [
+        12,
+        17
+      ],
+      "rows": [
+        138,
+        222
+      ],
+      "feature": "green checker, narrow center approach, central island jumps between outer tunnels"
+    },
+    {
+      "video_seconds": [
+        18,
+        25
+      ],
+      "rows": [
+        222,
+        308
+      ],
+      "feature": "green checker and blue cross-shaped island chain with outer rails"
+    },
+    {
+      "video_seconds": [
+        26,
+        31
+      ],
+      "rows": [
+        308,
+        392
+      ],
+      "feature": "tapered left approach, gap and zigzag narrow transition"
+    },
+    {
+      "video_seconds": [
+        32,
+        35
+      ],
+      "rows": [
+        392,
+        500
+      ],
+      "feature": "cross-shaped central holes, stepped narrowing exit and final straight tunnel"
+    }
+  ]
+}

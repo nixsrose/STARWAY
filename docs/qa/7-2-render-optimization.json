@@ -1,0 +1,328 @@
+{
+  "stage": "7-2",
+  "viewport": [
+    390,
+    844
+  ],
+  "method": "Node VM + @napi-rs/canvas; seeded random; 3 warmup frames and 12 measured frames per position. Includes profiling overhead. Not actual mobile FPS.",
+  "rows": [
+    2,
+    40,
+    80,
+    120,
+    160,
+    200,
+    240,
+    280,
+    320,
+    360
+  ],
+  "beforeMeanMs": 17.124948358333334,
+  "afterMeanMs": 15.703886866666668,
+  "reductionPercent": 8.29819431820447,
+  "pixelParity": "40 positions across stages 1-1, 4-2, 7-2, 10-3; byte-for-byte match against original road/structure renderers and projection; includes elevated ship and camera offset",
+  "before": [
+    {
+      "stage": "7-2",
+      "row": 2,
+      "ms": 16.821631583333332,
+      "parts": {
+        "drawStageScenery": 4.21442100009881,
+        "drawRoadPickup": 16.12763299967628,
+        "drawRoadSurfaces": 40.00227899989113,
+        "drawBoxSurfaces": 6.918808999587782,
+        "drawTunnelFrames": 25.019265000126325,
+        "drawSolidStructures": 35.86965300037991,
+        "drawWorldCoins": 1.3474150000838563,
+        "syncCockpit": 0.7873510002391413
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 40,
+      "ms": 16.400237833333332,
+      "parts": {
+        "drawStageScenery": 4.427391999983229,
+        "drawRoadPickup": 19.07591600297019,
+        "drawRoadSurfaces": 50.8539649999002,
+        "drawBoxSurfaces": 0.9471179998945445,
+        "drawTunnelFrames": 19.168059999588877,
+        "drawSolidStructures": 26.033249999862164,
+        "drawWorldCoins": 1.6584389999043196,
+        "syncCockpit": 0.7732369999866933
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 80,
+      "ms": 19.247964,
+      "parts": {
+        "drawStageScenery": 4.091666999971494,
+        "drawRoadPickup": 30.786872998345643,
+        "drawRoadSurfaces": 73.45535599987488,
+        "drawBoxSurfaces": 1.7121409999672323,
+        "drawTunnelFrames": 36.41718100046273,
+        "drawSolidStructures": 42.88337200018577,
+        "drawWorldCoins": 3.564549000118859,
+        "syncCockpit": 0.7161019999766722
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 120,
+      "ms": 16.68397008333333,
+      "parts": {
+        "drawStageScenery": 4.130475000361912,
+        "drawRoadPickup": 31.011450997320935,
+        "drawRoadSurfaces": 76.15458900015801,
+        "drawBoxSurfaces": 9.181884000310674,
+        "drawTunnelFrames": 0.03356299991719425,
+        "drawSolidStructures": 12.462850000127219,
+        "drawWorldCoins": 1.4796680000144988,
+        "syncCockpit": 0.6348289997549728
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 160,
+      "ms": 17.947248333333334,
+      "parts": {
+        "drawStageScenery": 4.346221000188962,
+        "drawRoadPickup": 39.57937000505626,
+        "drawRoadSurfaces": 86.4627829999663,
+        "drawBoxSurfaces": 4.885675999918021,
+        "drawTunnelFrames": 0.03855699999257922,
+        "drawSolidStructures": 8.016897999565117,
+        "drawWorldCoins": 1.1661529997363687,
+        "syncCockpit": 0.7519980000797659
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 200,
+      "ms": 18.81536675,
+      "parts": {
+        "drawStageScenery": 4.312938999850303,
+        "drawRoadPickup": 35.778002002625726,
+        "drawRoadSurfaces": 73.43207299988717,
+        "drawBoxSurfaces": 11.34410099987872,
+        "drawTunnelFrames": 0.03668599983211607,
+        "drawSolidStructures": 14.615978000219911,
+        "drawWorldCoins": 2.185113999992609,
+        "syncCockpit": 0.6626600000308827
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 240,
+      "ms": 15.814400416666667,
+      "parts": {
+        "drawStageScenery": 3.858255999861285,
+        "drawRoadPickup": 33.3471219985513,
+        "drawRoadSurfaces": 58.409240999724716,
+        "drawBoxSurfaces": 23.93905199994333,
+        "drawTunnelFrames": 0.030285000102594495,
+        "drawSolidStructures": 26.837002999614924,
+        "drawWorldCoins": 1.2200730001786724,
+        "syncCockpit": 0.6581350001506507
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 280,
+      "ms": 16.145632833333334,
+      "parts": {
+        "drawStageScenery": 4.09586199990008,
+        "drawRoadPickup": 26.410064992960542,
+        "drawRoadSurfaces": 47.94350600009784,
+        "drawBoxSurfaces": 31.836535000125878,
+        "drawTunnelFrames": 0.030686999671161175,
+        "drawSolidStructures": 34.77343400043901,
+        "drawWorldCoins": 3.9854870000854135,
+        "syncCockpit": 0.5740690000820905
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 320,
+      "ms": 15.865363083333333,
+      "parts": {
+        "drawStageScenery": 4.191619000164792,
+        "drawRoadPickup": 27.522162998910062,
+        "drawRoadSurfaces": 49.71082799998112,
+        "drawTunnelFrames": 4.744671999942511,
+        "drawBoxSurfaces": 17.632430998492055,
+        "drawSolidStructures": 27.954557999619283,
+        "drawWorldCoins": 3.443339000106789,
+        "syncCockpit": 0.5475169998826459
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 360,
+      "ms": 17.507668666666667,
+      "parts": {
+        "drawStageScenery": 4.408563999924809,
+        "drawRoadPickup": 29.714951992500573,
+        "drawRoadSurfaces": 56.713074000086635,
+        "drawBoxSurfaces": 4.916732000303455,
+        "drawTunnelFrames": 26.980753000243567,
+        "drawSolidStructures": 35.16051300021354,
+        "drawWorldCoins": 2.3210159996524453,
+        "syncCockpit": 0.5562850000569597
+      }
+    }
+  ],
+  "after": [
+    {
+      "stage": "7-2",
+      "row": 2,
+      "ms": 14.310689583333334,
+      "parts": {
+        "drawStageScenery": 3.879787999903783,
+        "drawRoadPickup": 13.615966001525521,
+        "drawRoadSurfaces": 32.42149200034328,
+        "drawBoxSurfaces": 5.658648999873549,
+        "drawTunnelFrames": 18.548769999993965,
+        "drawSolidStructures": 26.656490000197664,
+        "drawWorldCoins": 1.509628999978304,
+        "syncCockpit": 0.774506000103429
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 40,
+      "ms": 14.414362583333334,
+      "parts": {
+        "drawStageScenery": 4.3332629998913035,
+        "drawRoadPickup": 17.098707000957802,
+        "drawRoadSurfaces": 40.476680999970995,
+        "drawBoxSurfaces": 0.8995059998705983,
+        "drawTunnelFrames": 16.92408700019587,
+        "drawSolidStructures": 20.857699999702163,
+        "drawWorldCoins": 2.0668849997455254,
+        "syncCockpit": 0.6943300005514175
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 80,
+      "ms": 18.51665775,
+      "parts": {
+        "drawStageScenery": 4.849251000210643,
+        "drawRoadPickup": 26.731027997098863,
+        "drawRoadSurfaces": 61.775687000132166,
+        "drawBoxSurfaces": 1.6683070001890883,
+        "drawTunnelFrames": 34.40916499996092,
+        "drawSolidStructures": 38.733796999556944,
+        "drawWorldCoins": 2.6641479999525473,
+        "syncCockpit": 0.6693790002027526
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 120,
+      "ms": 15.005030333333332,
+      "parts": {
+        "drawStageScenery": 4.032618000055663,
+        "drawRoadPickup": 26.407253997633234,
+        "drawRoadSurfaces": 62.06294800003525,
+        "drawBoxSurfaces": 7.787600999814458,
+        "drawTunnelFrames": 0.03140600002370775,
+        "drawSolidStructures": 9.412748000235297,
+        "drawWorldCoins": 1.4392189999343827,
+        "syncCockpit": 0.6113020003540441
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 160,
+      "ms": 15.939481416666666,
+      "parts": {
+        "drawStageScenery": 3.8616309999488294,
+        "drawRoadPickup": 34.32621900062077,
+        "drawRoadSurfaces": 69.66341800009832,
+        "drawBoxSurfaces": 4.550471999566071,
+        "drawTunnelFrames": 0.03446200059261173,
+        "drawSolidStructures": 6.238233999698423,
+        "drawWorldCoins": 1.0715960001107305,
+        "syncCockpit": 0.6648940000450239
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 200,
+      "ms": 18.785801083333332,
+      "parts": {
+        "drawStageScenery": 3.9614009998040274,
+        "drawRoadPickup": 38.08189000119455,
+        "drawRoadSurfaces": 73.0401089998195,
+        "drawBoxSurfaces": 10.495569999911822,
+        "drawTunnelFrames": 0.03352900012396276,
+        "drawSolidStructures": 12.246028000139631,
+        "drawWorldCoins": 1.4434160001110286,
+        "syncCockpit": 0.6404360001906753
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 240,
+      "ms": 14.967467833333332,
+      "parts": {
+        "drawStageScenery": 4.006658999831416,
+        "drawRoadPickup": 29.0497819990851,
+        "drawRoadSurfaces": 49.041072999709286,
+        "drawBoxSurfaces": 21.736484000459313,
+        "drawTunnelFrames": 0.03169299988076091,
+        "drawSolidStructures": 23.43609699991066,
+        "drawWorldCoins": 1.1347379999933764,
+        "syncCockpit": 0.5821979999309406
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 280,
+      "ms": 14.912601916666667,
+      "parts": {
+        "drawStageScenery": 3.959738999954425,
+        "drawRoadPickup": 23.59646500321105,
+        "drawRoadSurfaces": 42.26251700008288,
+        "drawBoxSurfaces": 26.849463000544347,
+        "drawTunnelFrames": 0.027664999943226576,
+        "drawSolidStructures": 28.387859999667853,
+        "drawWorldCoins": 4.28209299989976,
+        "syncCockpit": 0.5595209997845814
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 320,
+      "ms": 14.271436999999999,
+      "parts": {
+        "drawStageScenery": 4.133171999943443,
+        "drawRoadPickup": 24.886043000617065,
+        "drawRoadSurfaces": 42.92936800012831,
+        "drawTunnelFrames": 3.456404000520706,
+        "drawBoxSurfaces": 13.942515999427997,
+        "drawSolidStructures": 20.130113999475725,
+        "drawWorldCoins": 3.0517379998927936,
+        "syncCockpit": 0.5467330000828952
+      }
+    },
+    {
+      "stage": "7-2",
+      "row": 360,
+      "ms": 15.915339166666667,
+      "parts": {
+        "drawStageScenery": 3.924644000013359,
+        "drawRoadPickup": 26.11567200580612,
+        "drawRoadSurfaces": 46.46001900034025,
+        "drawBoxSurfaces": 4.5251980003667995,
+        "drawTunnelFrames": 23.530708000413142,
+        "drawSolidStructures": 29.840920999879017,
+        "drawWorldCoins": 2.043450000230223,
+        "syncCockpit": 0.5443100001430139
+      }
+    }
+  ]
+}

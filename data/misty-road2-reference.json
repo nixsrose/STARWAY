@@ -1,0 +1,97 @@
+{
+  "source": "296142.mp4",
+  "duration_seconds": 44.326,
+  "sampling": "2s overall; 1s from16–31s",
+  "course": "5-2",
+  "note": "Rows are adapted to the existing seven-lane engine and 500-row editor limit; source spatial dimensions cannot be recovered exactly from video. Red/blue paints are normal floor; pale pink stairs use existing lethal pink paint. Tunnel roofs remain climbable under current game rules.",
+  "segments": [
+    {
+      "video_seconds": [
+        0,
+        3
+      ],
+      "rows": [
+        0,
+        32
+      ],
+      "feature": "narrow blue start"
+    },
+    {
+      "video_seconds": [
+        4,
+        9
+      ],
+      "rows": [
+        32,
+        104
+      ],
+      "feature": "red/blue checker floor"
+    },
+    {
+      "video_seconds": [
+        10,
+        12
+      ],
+      "rows": [
+        104,
+        140
+      ],
+      "feature": "stair-step central void, bypass right"
+    },
+    {
+      "video_seconds": [
+        14,
+        16
+      ],
+      "rows": [
+        140,
+        188
+      ],
+      "feature": "checker merge"
+    },
+    {
+      "video_seconds": [
+        17,
+        26
+      ],
+      "rows": [
+        188,
+        296
+      ],
+      "feature": "raised transverse red slabs, repeated jumps"
+    },
+    {
+      "video_seconds": [
+        28,
+        31
+      ],
+      "rows": [
+        296,
+        370
+      ],
+      "feature": "pink stair obstacle bypass and diagonal color boundary"
+    },
+    {
+      "video_seconds": [
+        32,
+        39
+      ],
+      "rows": [
+        370,
+        454
+      ],
+      "feature": "repeated straight tunnel banks"
+    },
+    {
+      "video_seconds": [
+        40,
+        42
+      ],
+      "rows": [
+        454,
+        500
+      ],
+      "feature": "narrow blue finish"
+    }
+  ]
+}

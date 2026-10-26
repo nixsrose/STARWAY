@@ -1,0 +1,15 @@
+import {mkdir,readFile,writeFile,copyFile,cp,rm} from 'node:fs/promises';
+const source=new URL('../../dist/',import.meta.url),web=new URL('./web/',import.meta.url);
+await rm(web,{recursive:true,force:true});await mkdir(new URL('public/',web),{recursive:true});
+let html=await readFile(new URL('index.html',source),'utf8');
+const name=html.match(/<script src="(starway-[a-f0-9]+\.js)"/)?.[1];if(!name)throw Error('Missing game bundle');
+await copyFile(new URL(name,source),new URL('public/'+name,web));
+let css=await readFile(new URL('cockpit.css',source),'utf8');css=css.replace(/env\(safe-area-inset-(top|bottom|left|right)\)/g,(_,s)=>`var(--toss-safe-${s}, env(safe-area-inset-${s}))`);
+await writeFile(new URL('public/cockpit.css',web),css);
+for(const file of ['oddleaf-games.png','version.json'])await copyFile(new URL(file,source),new URL('public/'+file,web));
+await cp(new URL('audio/',source),new URL('public/audio/',web),{recursive:true});
+await copyFile(new URL('runtime.js',import.meta.url),new URL('public/toss-runtime.js',web));
+html=html.replace(/<script src="starway-[a-f0-9]+\.js"[^>]*><\/script>/,'<script type="module" src="/main.ts"></script>');
+await writeFile(new URL('index.html',web),html);
+await writeFile(new URL('main.ts',web),(await readFile(new URL('bridge.ts',import.meta.url),'utf8')).replace('__GAME_BUNDLE__',name));
+console.log('Prepared local Toss assets:',name);

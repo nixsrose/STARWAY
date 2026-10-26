@@ -1,0 +1,43 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {DatabaseSync} from 'node:sqlite';
+const worker=await import('data:text/javascript;base64,'+Buffer.from(fs.readFileSync('worker/index.mjs','utf8').replace("import {normalizeBackground} from '../shared/background.mjs';",fs.readFileSync('shared/background.mjs','utf8').replace('export function','function')).replace("import {normalizeFinish,mapFinishZ,mapFinishReached,flightContacts,normalizeMapExtras,hazardTunnelRoofAt} from '../shared/finish.mjs';",fs.readFileSync('shared/finish.mjs','utf8').replace(/export /g,'')).replace("import {ASSETS} from './assets.mjs';",'const ASSETS={};')).toString('base64'));
+const sql=new DatabaseSync(':memory:');sql.exec(fs.readFileSync('drizzle/0000_creator.sql','utf8'));
+const DB={prepare(s){let args=[];const st=sql.prepare(s);return{bind(...a){args=a;return this},async first(){return st.get(...args)||null},async all(){return{results:st.all(...args)}},async run(){const r=st.run(...args);return{meta:{changes:Number(r.changes)}}}}},async batch(items){sql.exec('BEGIN');try{const out=[];for(const q of items)out.push(await q.run());sql.exec('COMMIT');return out}catch(e){sql.exec('ROLLBACK');throw e}}};
+async function api(path,body,user='alice'){const r=await worker.default.fetch(new Request('https://game.test/api/creator/'+path,{method:body===undefined?'GET':'POST',headers:{...(user?{'oai-authenticated-user-id':user}:{}),'Origin':'https://game.test','Content-Type':'application/json'},...(body===undefined?{}:{body:JSON.stringify(body)})}),{DB});return{status:r.status,data:await r.json()}}
+assert.equal((await api('maps',undefined,null)).status,401);assert.equal((await api('profile',{nickname:'Alice'})).status,200);await api('profile',{nickname:'Bob'},'bob');
+const raw={title:'First map',gravity:18,tiles:Array.from({length:64},()=>[0,0,0,1,0,0,0])};let r=await api('maps',{map:raw});assert.equal(r.status,201);const id=r.data.id;assert.equal((await api('maps/'+id,undefined,'bob')).status,404);assert.equal((await api('maps')).data.maps.length,0);assert.equal((await api('maps?mine=1')).data.maps.length,1);
+const session=(await api('maps/'+id+'/runs',{})).data.runId;const trace=[];for(let f=1;f<=200;f++)trace.push([f/60,2+18*f/60,0,0,18]);sql.prepare('UPDATE creator_runs SET created_at=? WHERE id=?').run(Date.now()-4000,session);
+r=await api('maps/'+id+'/records',{runId:session,ms:3333,trace});assert.equal(r.status,200,JSON.stringify(r));assert.equal(r.data.published,true);assert.equal((await api('maps',undefined,'bob')).data.maps.length,1);assert.equal((await api('maps/'+id+'/records')).data.records[0].nickname,'Alice');assert.equal((await api('maps/'+id+'/records',{runId:session,ms:3333,trace})).status,200);
+const bobRun=(await api('maps/'+id+'/runs',{},'bob')).data.runId;sql.prepare('UPDATE creator_runs SET created_at=? WHERE id=?').run(Date.now()-5000,bobRun);const slower=trace.map(([t,z,x,y,v])=>[t*1.2,z,x,y,v/1.2]);assert.equal((await api('maps/'+id+'/records',{runId:bobRun,ms:4000,trace:slower},'bob')).status,200);assert.equal((await api('maps/'+id+'/records')).data.records.length,2);
+const cheatRun=(await api('maps/'+id+'/runs',{},'bob')).data.runId;assert.equal((await api('maps/'+id+'/records',{runId:cheatRun,ms:100,trace:[[.01,62,0,0,18]]},'bob')).status,400);assert.equal((await api('maps',{map:{...raw,tiles:[[1]]}})).status,400);assert.equal((await api('maps',{map:{...raw,gravity:100}})).status,400);
+const badOrigin=await worker.default.fetch(new Request('https://game.test/api/creator/maps',{method:'POST',headers:{'oai-authenticated-user-id':'alice',origin:'https://evil.test'},body:JSON.stringify({map:raw})}),{DB});assert.equal(badOrigin.status,403);
+console.log('PASS: D1 schema, auth/origin, map validation, private drafts, creator clear publication, cross-user listing, leaderboard, single-use sessions and forged-record rejection');
+async function remove(mapId,user='alice',origin='https://game.test') {const r=await worker.default.fetch(new Request('https://game.test/api/creator/maps/'+mapId,{method:'DELETE',headers:{...(user?{'oai-authenticated-user-id':user}:{}),origin}}),{DB});return r.status;}
+assert.equal(await remove(id,'bob'),403);
+assert.equal(await remove(id,null),401);
+assert.equal(await remove(id,'alice','https://evil.test'),403);
+assert.equal((await api('maps/'+id)).status,200);
+assert.equal(await remove(id),200);
+for(const table of ['creator_records','creator_runs'])assert.equal(sql.prepare('SELECT COUNT(*) n FROM '+table+' WHERE map_id=?').get(id).n,0);
+assert.equal((await api('maps/'+id)).status,404);
+assert.equal((await api('maps')).data.maps.length,0);
+assert.equal((await api('maps/'+id+'/records',{runId:session,ms:3333,trace})).status,404);
+const draft=(await api('maps',{map:raw})).data.id;assert.equal(await remove(draft),200);
+console.log('PASS: owner-only draft/published deletion, auth/origin protection, record/session cleanup and deleted-run rejection');
+
+const fuelMap=await api('maps',{map:{...raw,fuelDrainMultiplier:.5}});assert.equal(fuelMap.status,201);assert.equal((await api('maps/'+fuelMap.data.id)).data.map.fuelDrainMultiplier,.5);assert.equal((await api('maps',{map:{...raw,fuelDrainMultiplier:0}})).status,400);assert.equal((await api('maps',{map:{...raw,fuelDrainMultiplier:1.1}})).status,400);console.log('PASS: server preserves fuel rate and rejects invalid multipliers');
+const browseMap=await api('maps',{map:{...raw,title:'Preview route',gravityUnit:'coefficient',gravity:150,fuelDrainMultiplier:1.5}});const browseId=browseMap.data.id;sql.prepare("UPDATE creator_maps SET status='published' WHERE id=?").run(browseId);sql.prepare('INSERT INTO creator_records(map_id,user_id,best_ms,created_at) VALUES(?,?,?,?)').run(browseId,'bob',3000,Date.now());
+const feed=(await api('maps?sort=popular')).data.maps;assert.equal(feed[0].id,browseId);const card=feed.find(m=>m.id===browseId);assert.equal(card.length,64);assert.equal(card.gravity,150);assert.equal(card.fuelDrainMultiplier,1.5);assert.equal(card.preview.cells.length,64*7);assert.equal(card.payload,undefined);assert.equal(card.owner_id,undefined);assert.equal(card.my_best_ms,null);
+assert.ok((await api('maps?sort=unplayed',undefined,'bob')).data.maps.every(m=>m.id!==browseId));assert.ok((await api('maps?sort=unplayed')).data.maps.some(m=>m.id===browseId));
+for(let i=0;i<55;i++)sql.prepare('INSERT INTO creator_records(map_id,user_id,best_ms,created_at) VALUES(?,?,?,?)').run(browseId,'rank-'+i,3100+i,Date.now());sql.prepare('INSERT INTO creator_records(map_id,user_id,best_ms,created_at) VALUES(?,?,?,?)').run(browseId,'alice',9000,Date.now());const ranks=(await api('maps/'+browseId+'/records')).data;assert.equal(ranks.records.length,50);assert.equal(ranks.my_best_ms,9000);assert.equal(ranks.best_ms,3000);
+assert.equal((await api('maps?mine=1',undefined,'bob')).data.maps.length,0);assert.ok((await api('maps?mine=1')).data.maps.some(m=>m.id===browseId));
+const summary=worker.creatorMapSummary({tiles:[[0,1,2,3,4,5,8],[1,1,1,1,1,1,1]],roadPaint:[['gray','pink','pink','gray','gray','gray','gray']],ceilings:[0,1.15],tunnelCenters:{1:[0]},gravity:18});assert.equal(summary.preview.cells.slice(0,7),'0hxfusb');assert.equal(summary.preview.cells[10],'t');assert.equal(summary.gravity,100);
+console.log('PASS: compact previews, map metadata, popular/unplayed/owner filtering, personal record outside top50 and no raw payload/owner ID leakage');
+const centerMap=worker.validateMap({...raw,tiles:Array.from({length:64},()=>[0,0,0,1,0,0,0])});
+for(const offset of [-.4,-.25,.25,.4]){const legitimate=trace.map(([t,z,x,y,v],i)=>[t,z,Math.sign(offset)*Math.min(Math.abs(offset),(i+1)*.05),y,v]);assert.equal(worker.validateTrace(centerMap,legitimate,3333,5000),true);}
+assert.throws(()=>worker.validateTrace(centerMap,trace.map(([t,z,x,y,v],i)=>[t,z,-Math.min(.85,(i+1)*.05),y,v]),3333,5000),/道路|도로 이탈/);
+console.log('PASS: center-lane movement within ±0.4 accepted with game-aligned half-cell coordinates; actual off-road trace still rejected');
+
+const background={kind:'image',color:'#102030',dim:.4,image:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a1ioAAAAASUVORK5CYII='};
+let backgroundUpload=await api('maps',{map:{...raw,background}});assert.equal(backgroundUpload.status,201);assert.deepEqual((await api('maps/'+backgroundUpload.data.id)).data.map.background,background);
+assert.equal((await api('maps',{map:{...raw,background:{...background,image:'https://example.com/image.png'}}})).status,400);
+assert.equal((await api('maps',{map:{...raw,background:{...background,dim:2}}})).status,400);console.log('PASS: creator background image roundtrip and invalid URL/dimming rejection');

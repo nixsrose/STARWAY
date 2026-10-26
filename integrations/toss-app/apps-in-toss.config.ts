@@ -1,0 +1,2 @@
+import {defineConfig} from '@apps-in-toss/web-framework/config';
+export default defineConfig({appName:process.env.TOSS_APP_NAME || 'starway-runner',brand:{primaryColor:'#87e4f1'},permissions:[],webBundleDir:'web-dist',navigationBar:{withBackButton:true,withHomeButton:true,withTitle:false,theme:'dark'},webView:{allowsInlineMediaPlayback:true,mediaPlaybackRequiresUserAction:false,bounces:false,pullToRefreshEnabled:false,overScrollMode:'never',allowsBackForwardNavigationGestures:false}});

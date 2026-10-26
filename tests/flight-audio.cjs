@@ -1,0 +1,16 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
+let created=0,started=0,stopped=0;const listeners={};
+const param=()=>({value:0,setValueAtTime(v){this.value=v},linearRampToValueAtTime(v){this.value=v},exponentialRampToValueAtTime(v){this.value=v},setTargetAtTime(v){this.value=v}});
+const node=()=>({gain:param(),frequency:param(),playbackRate:param(),threshold:param(),ratio:param(),knee:param(),attack:param(),release:param(),connect(){},disconnect(){},start(){started++},stop(){stopped++}});
+class Audio{constructor(){created++;this.currentTime=1;this.state='running';this.sampleRate=1000;this.destination={}}createGain(){return node()}createOscillator(){return node()}createDynamicsCompressor(){return node()}createBiquadFilter(){return node()}createBufferSource(){return node()}createBuffer(n,size){return{getChannelData:()=>new Float32Array(size)}}resume(){this.state='running';return Promise.resolve()}suspend(){this.state='suspended';return Promise.resolve()}}
+const soundButton={onclick(){b.sound=!b.sound}},b={settings:{sfxVolume:1},tunnelGrounded:false,AudioContext:Audio,document:{hidden:false,addEventListener(k,v){listeners[k]=v}},sound:false,state:'ready',speed:0,fuel:100,grounded:true,vy:0,z:2,x:0,y:0,mode:'story',data:{storyTimes:[]},level:0,time:2,editorTesting:false,$:()=>soundButton,draw(){},step(){},beginRun(){},finish(){b.state='win'},applySettings(){},beep(){},ceilingAt:()=>0,tunnelRoofAt:()=>0};vm.createContext(b);vm.runInContext(fs.readFileSync('dist/flight-audio.js','utf8'),b);const run=s=>vm.runInContext(s,b);
+
+run("flightSfx('coin')");assert.equal(created,0);soundButton.onclick();assert.equal(created,1);assert.equal(started,0,'audio unlock creates no engine sources');
+b.state='play';b.speed=24;b.draw();assert.equal(started,0,'maximum speed produces no engine sound');
+run("flightSfx('coin')");const count=started;assert.ok(count>0);run("flightSfx('coin')");assert.equal(started,count);run('flightAudio.context.currentTime+=1');run("flightSfx('crash')");assert.ok(stopped>0);assert.ok(run('flightAudio.voices')<=12);
+b.document.hidden=true;listeners.visibilitychange();assert.equal(run('flightAudio.master.gain.value'),0);assert.equal(run('flightAudio.context.state'),'suspended');b.document.hidden=false;listeners.visibilitychange();assert.equal(run('flightAudio.context.state'),'running');
+b.sound=false;b.draw();assert.equal(run('flightAudio.master.gain.value'),0);const muted=started;run("flightSfx('jump')");assert.equal(started,muted);
+console.log('PASS: no engine sources on unlock/flight, one-shot cooldown/cap, mute and background silence');
+
+run("sound=true;globalThis.tones=[];globalThis.noises=[];flightTone=(...a)=>tones.push(a);flightNoise=(...a)=>noises.push(a);flightAudio.context.currentTime+=1;flightSfx('landing',{strength:.35,roof:false});globalThis.soft=tones.at(-1)[3];flightAudio.context.currentTime+=1;flightSfx('landing',{strength:1,roof:false});globalThis.hard=tones.at(-1)[3];flightAudio.context.currentTime+=1;flightSfx('landing',{strength:1,roof:true})");assert.ok(run('hard>soft'));assert.equal(run('tones.at(-1)[0]'),140);
+console.log('PASS landing volume follows impact strength and roof contact has distinct tone');

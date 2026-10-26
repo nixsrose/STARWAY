@@ -1,0 +1,20 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
+const noop=()=>{},saved={},ctx=new Proxy({createLinearGradient:()=>({addColorStop:noop}),createRadialGradient:()=>({addColorStop:noop})},{get:(o,k)=>o[k]||noop});
+function boot(){const els={},el=()=>({style:{},children:[],setAttribute:noop,classList:{add:noop,remove:noop,toggle:noop},addEventListener:noop,appendChild(c){this.children.push(c)},getContext:()=>ctx});const b={document:{getElementById:id=>els[id]??(els[id]=el()),querySelectorAll:()=>[],createElement:el,addEventListener:noop},innerWidth:390,innerHeight:844,devicePixelRatio:1,addEventListener:noop,localStorage:{getItem:k=>saved[k]??null,setItem:(k,v)=>saved[k]=v,removeItem:k=>delete saved[k]},requestAnimationFrame:noop,setTimeout:noop,clearTimeout:noop,performance:{now:()=>100},Path2D:function(){},console};vm.createContext(b);vm.runInContext(fs.readFileSync('dist/'+fs.readFileSync('dist/index.html','utf8').match(/<script src="([^"]+)"/)[1],'utf8'),b);return {b,els,run:s=>vm.runInContext(s,b)}}
+
+const {b,els,run}=boot();
+run(`editorMap=emptyEditorMap(64);$('editorTemplate').value='0';$('editorColor').value='violet';$('editorBrush').value='hazardTunnel';for(let r=8;r<18;r++)paintEditorCell(r,3,true);renderEditorGrid();globalThis.custom=normalizeEditorMap(editorMap)`);
+assert.equal(run('custom.hazardTunnels.length'),10);assert.equal(run('custom.roadPaint[8][3]'),'gray');assert.equal(run('custom.ceilings[8]'),1.15);
+run(`mode='story';level=0;STORY_COURSES[0]=custom;beginRun(true);speed=10;throttle=10;z=7;x=0;for(let i=0;i<300&&state==='play'&&z<18.1;i++)step(1/120)`);assert.equal(run('state'),'play');assert.ok(run('z')>=18);
+run(`beginRun(true);z=10;x=0;y=1.4;vy=-2;grounded=false;speed=0;throttle=0;for(let i=0;i<30&&state==='play';i++)step(1/120)`);assert.equal(run('state'),'exploding');assert.equal(run('deathReason'),'위험 터널 지붕 접촉');assert.ok(run('particles.length')>0);run('draw();for(let i=0;i<150;i++)step(1/120)');assert.equal(run('state'),'dead');
+run(`beginRun(true);z=10;x=0;y=3;vy=0;grounded=false;speed=0;throttle=0;step(1/120)`);assert.equal(run('state'),'play');
+run(`beginRun(true);z=10;x=0;y=1.27;vy=0;grounded=true;tunnelGrounded=true;speed=0;throttle=0;step(1/120)`);assert.equal(run('state'),'exploding');
+run(`editorMap=JSON.parse(JSON.stringify(custom));$('editorBrush').value='tunnel';for(let r=8;r<18;r++)paintEditorCell(r,4,true);STORY_COURSES[0]=normalizeEditorMap(editorMap);beginRun(true);z=10;x=1;y=1.4;vy=-2;grounded=false;speed=0;throttle=0;for(let i=0;i<30&&state==='play';i++)step(1/120)`);assert.equal(run('state'),'play');assert.equal(run('tunnelGrounded'),true);
+run(`$('editorBrush').value='hazardTunnelRemove';paintEditorCell(8,3)`);assert.equal(run('hazardTunnelAt(editorMap,8,0)'),false);assert.equal(run('editorMap.ceilings[8]'),1.15);assert.equal(run('editorMap.tiles[8][3]'),1);
+run(`$('editorBrush').value='tunnel';paintEditorCell(9,3)`);assert.equal(run('hazardTunnelAt(editorMap,9,0)'),false);
+run(`$('editorBrush').value='0';paintEditorCell(10,3)`);assert.equal(run('hazardTunnelAt(editorMap,10,0)'),false);
+run(`editorMap=JSON.parse(JSON.stringify(custom));$('editorCopyFirst').value='9';$('editorCopyLast').value='10';copyEditorRange();$('editorPasteAt').value='21';$('editorPasteMirror').checked=true;pasteEditorRange()`);assert.equal(run('hazardTunnelAt(editorMap,20,0)'),true);
+run(`$('editorLength').value='16';$('editorResize').onclick()`);assert.equal(run('editorMap.hazardTunnels.length'),8);
+run(`editorMap=JSON.parse(JSON.stringify(custom));$('editorSave').onclick();$('editorSaveAccept').onclick();globalThis.backup=validateBackup(backupCapture())`);assert.equal(run('backup.storyMaps[0].hazardTunnels.length'),10);const fresh=boot();assert.equal(fresh.run('STORY_COURSES[0].hazardTunnels.length'),10);
+assert.throws(()=>run('normalizeEditorMap({...emptyEditorMap(64),hazardTunnels:[{row:8,lane:3}]})'));
+console.log('PASS hazard tunnel placement, interior passage, roof landing/walking explosion and delayed result, overhead flight, adjacent normal roof, removal/normal repaint/erase, mirrored copy, resize, backup and reload');

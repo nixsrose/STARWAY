@@ -1,0 +1,14 @@
+const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
+const noop=()=>{},ctx=new Proxy({createLinearGradient:()=>({addColorStop:noop}),createRadialGradient:()=>({addColorStop:noop})},{get:(o,k)=>o[k]||noop});
+const el=()=>({style:{},setAttribute:noop,classList:{add:noop,remove:noop,toggle:noop},addEventListener:noop,appendChild:noop,getContext:()=>ctx});
+let els={},saved={},timers=[];
+const b={document:{getElementById:id=>els[id]??(els[id]=el()),querySelectorAll:()=>[],createElement:el,addEventListener:noop},innerWidth:390,innerHeight:844,devicePixelRatio:1,addEventListener:noop,localStorage:{getItem:k=>saved[k]||null,setItem:(k,v)=>saved[k]=v},requestAnimationFrame:noop,setTimeout:fn=>(timers.push(fn),timers.length),clearTimeout:noop,performance:{now:()=>100},Path2D:function(){},console};
+vm.createContext(b);for(const f of ['stages','game','story-data','expansion','visuals','monetization','cockpit','surfaces','patterns','endless','editor','gravity','endless-cues'])vm.runInContext(fs.readFileSync('dist/'+f+'.js','utf8'),b);
+
+vm.runInContext(`{
+ if(remixPacing(0).phase!=='intro'||remixPacing(168).phase!=='intro'||remixPacing(504).phase!=='peak'||!remixPacing(672).recovery)throw Error('pacing sequence');
+ if(remixPacing(2016).pressure<=remixPacing(336).pressure)throw Error('difficulty progression');
+ mode='endless';beginRun(true);if(endlessGravity!==18)throw Error('initial gravity');speed=0;throttle=0;z=132;x=infiniteRoad.guide[132]-3;step(.001);const advertised=previewEndlessGravity;if(advertised===null)throw Error('no preview');syncCockpit();if(!$('gravityPreview').textContent.includes(gravityCoefficientFromLegacy(advertised)))throw Error('preview label');state='pause';step(.5);if(previewEndlessGravity!==advertised)throw Error('pause rerolled gravity');state='play';z=180;x=infiniteRoad.guide[180]-3;y=1;vy=1;grounded=false;step(.001);if(endlessGravity!==18||pendingEndlessGravity!==advertised)throw Error('airborne gravity changed');y=0;vy=0;grounded=true;step(.001);if(endlessGravity!==advertised||pendingEndlessGravity!==null)throw Error('announced gravity not applied');
+ mode='endless';beginRun(true);generateBlock(672,0,20);const recovery=sectionAt(672);if(recovery.pacing!=='recovery')throw Error('missing recovery');if(infiniteRoad.jumpRows.some(r=>r>=672&&r<840))throw Error('recovery jump');let fuelPads=0;for(let r=672;r<840;r++){if(infiniteRoad.ceilings[r])throw Error('recovery tunnel');if(rows[r].some(t=>t===2||t===8)||infiniteRoad.roadPaint[r].includes('pink'))throw Error('recovery hazard');if(rows[r].includes(3))fuelPads++;}if(!fuelPads)throw Error('recovery without fuel');
+ console.log('PASS: intro/challenge/recovery schedule, advancing difficulty, 48m gravity preview, pause stability, airborne deferral and recovery safety/refuelling');
+}`,b);

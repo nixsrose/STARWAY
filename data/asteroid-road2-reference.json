@@ -1,0 +1,92 @@
+{
+  "video": "296148.mp4",
+  "duration": 36.079,
+  "inspection": "0–35 seconds at 1-second intervals",
+  "sections": [
+    {
+      "start": 0,
+      "end": 66,
+      "type": "crossroads",
+      "name": "주황 체크 발판과 중앙 단절",
+      "side": 3
+    },
+    {
+      "start": 66,
+      "end": 88,
+      "type": "islands",
+      "name": "회색 분리 발판과 오른쪽 전환",
+      "side": 3
+    },
+    {
+      "start": 88,
+      "end": 152,
+      "type": "split",
+      "name": "붉은 위험 레일과 주황 우회로",
+      "side": 3
+    },
+    {
+      "start": 152,
+      "end": 174,
+      "type": "crossroads",
+      "name": "중앙 외길로 합류",
+      "side": 3
+    },
+    {
+      "start": 174,
+      "end": 216,
+      "type": "raised_window",
+      "name": "분홍 블록 상단과 중앙 홈",
+      "side": 3
+    },
+    {
+      "start": 216,
+      "end": 306,
+      "type": "single",
+      "name": "긴 주황 외길과 작은 측면 발판",
+      "side": 3
+    },
+    {
+      "start": 306,
+      "end": 330,
+      "type": "crossroads",
+      "name": "넓은 체크 발판과 쌍레일 분기",
+      "side": 3
+    },
+    {
+      "start": 330,
+      "end": 352,
+      "type": "split",
+      "name": "초록 주황 교대 쌍레일",
+      "side": 3
+    },
+    {
+      "start": 352,
+      "end": 372,
+      "type": "tunnel",
+      "name": "복숭아색 직선 쌍터널",
+      "side": 3
+    },
+    {
+      "start": 372,
+      "end": 426,
+      "type": "raised_window",
+      "name": "중앙이 뚫린 분홍 상단 발판",
+      "side": 3
+    },
+    {
+      "start": 426,
+      "end": 464,
+      "type": "split",
+      "name": "세 갈래 레일과 중앙 합류",
+      "side": 3
+    },
+    {
+      "start": 464,
+      "end": 500,
+      "type": "single",
+      "name": "체크 십자 발판과 마지막 외길",
+      "side": 3
+    }
+  ],
+  "notes": "영상의 순서·색상·분기·홈·상단 발판을 7열 500행으로 재구성. 원본의 정확한 물리 치수는 영상만으로 확정할 수 없어 점프 가능한 비율로 조정."
+}

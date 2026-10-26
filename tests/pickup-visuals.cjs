@@ -1,0 +1,12 @@
+const fs=require('fs'),vm=require('vm'),{createCanvas,Path2D}=require('@napi-rs/canvas');
+const main=createCanvas(760,900),els={},noop=()=>{};function el(){return{style:{},classList:{add:noop,remove:noop,toggle:noop},setAttribute:noop,appendChild:noop,addEventListener:noop,getContext:()=>createCanvas(600,340).getContext('2d')}}
+const b={document:{getElementById:id=>id==='game'?main:els[id]??(els[id]=el()),querySelectorAll:()=>[],createElement:tag=>tag==='canvas'?Object.assign(createCanvas(400,300),{style:{},setAttribute:noop}):el(),addEventListener:noop},innerWidth:760,innerHeight:900,devicePixelRatio:1,addEventListener:noop,localStorage:{getItem:()=>null,setItem:noop},requestAnimationFrame:noop,setTimeout:noop,clearTimeout:noop,performance:{now:()=>100},Path2D,console};vm.createContext(b);vm.runInContext(fs.readFileSync('dist/'+fs.readFileSync('dist/index.html','utf8').match(/<script src="([^\"]+)"/)[1],'utf8'),b);
+
+
+const assert=require('node:assert/strict');const run=s=>vm.runInContext(s,b);
+run("data.unlocked=20;mode='story';level=0;beginRun(true);z=8;x=0;state='play';globalThis.starwayPixelRatioCap=2;coins=new Map([[10,{lane:3,height:.45}]]);globalThis.actualBlocked=coinBlockedByBox;coinBlockedByBox=()=>false;time=0;ctx.clearRect(0,0,W,H);drawWorldCoins();");
+const first=Buffer.from(main.getContext('2d').getImageData(0,0,main.width,main.height).data);assert.ok(first.some(v=>v));
+run('time=.4;ctx.clearRect(0,0,W,H);drawWorldCoins()');const second=Buffer.from(main.getContext('2d').getImageData(0,0,main.width,main.height).data);assert.notDeepEqual(first,second,'coin rotation changes visible face');assert.equal(run('coins.size'),1);assert.equal(run('data.coins'),0);
+run('coinBlockedByBox=()=>true;ctx.clearRect(0,0,W,H);drawWorldCoins()');const hidden=main.getContext('2d').getImageData(0,0,main.width,main.height).data;assert.ok(!hidden.some(v=>v),'occluded coin must not render');
+run('coinBlockedByBox=actualBlocked');console.log('PASS: real Canvas animated coin, unchanged wallet/coin map and occlusion suppresses all coin pixels');
+run("coinBlockedByBox=()=>false;z=10.1;x=0;y=0;speed=0;throttle=0;grounded=true;runCoins=0;coins=new Map([[10,{lane:3,height:.4}]]);step(1/120)");assert.equal(run('runCoins'),1);assert.equal(run('coins.size'),0);assert.equal(run('pickupGlints.length'),1);run('state="pause";step(.1)');assert.equal(run('pickupGlints.length'),1);run('beginRun(true)');assert.equal(run('pickupGlints.length'),0);console.log('PASS: actual coin collection triggers glint once, pause preserves it and retry clears it');

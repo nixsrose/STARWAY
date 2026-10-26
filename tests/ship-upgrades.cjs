@@ -1,0 +1,23 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
+const noop=()=>{},saved={},ctx=new Proxy({createLinearGradient:()=>({addColorStop:noop}),createRadialGradient:()=>({addColorStop:noop})},{get:(o,k)=>o[k]||noop});
+function boot(){const els={},el=()=>({style:{},children:[],setAttribute:noop,classList:{add:noop,remove:noop,toggle:noop},addEventListener:noop,appendChild(c){this.children.push(c)},getContext:()=>ctx});const b={document:{getElementById:id=>els[id]??(els[id]=el()),querySelectorAll:()=>[],createElement:el,addEventListener:noop},innerWidth:390,innerHeight:844,devicePixelRatio:1,addEventListener:noop,localStorage:{getItem:k=>saved[k]??null,setItem:(k,v)=>saved[k]=v,removeItem:k=>delete saved[k]},requestAnimationFrame:noop,setTimeout:noop,clearTimeout:noop,performance:{now:()=>100},Path2D:function(){},console};vm.createContext(b);vm.runInContext(fs.readFileSync('dist/'+fs.readFileSync('dist/index.html','utf8').match(/<script src="([^"]+)"/)[1],'utf8'),b);return {b,els,run:s=>vm.runInContext(s,b)}}
+
+const {b,run}=boot();
+run(`{
+ if(skins.length!==12||Object.keys(data.shipUpgrades).length!==12)throw Error('catalog');
+ const profiles=new Set();for(let id=0;id<12;id++){const base=shipStats(id);profiles.add(JSON.stringify([base.speed,base.jump,base.fuel]));if(base.speed>=22||base.jump>=7.8||base.fuel>=1)throw Error('base downgrade');const max=shipStats(id,{[id]:{speed:5,jump:5,fuel:5}});if(max.speed<=22||max.jump<=7.8||max.fuel<=1)throw Error('growth');}if(profiles.size!==12)throw Error('identical ships');
+ data.owned=[0,1];data.coins=10000;showMenu('main');shipUpgradeSelection=0;openShipUpgrades();if(shipUpgradeSelection!==data.skin)throw Error('equipped initial');cycleShipUpgrade(1);if(shipUpgradeSelection!==1)throw Error('owned next');cycleShipUpgrade(1);if(shipUpgradeSelection!==0)throw Error('owned wrap');cycleShipUpgrade(-1);if(shipUpgradeSelection!==1)throw Error('owned previous');if(data.skin!==0)throw Error('browse equipped ship');shipUpgradeSelection=0;const cost=shipUpgradeCost(0,'speed'),balance=data.coins;
+ if(purchaseShipUpgrade('speed')||data.coins!==balance)throw Error('confirm missing');if(!purchaseShipUpgrade('speed')||data.coins!==balance-cost||data.shipUpgrades[0].speed!==1||data.shipUpgrades[1].speed!==0)throw Error('purchase');
+ const persisted=JSON.parse(localStorage.getItem('starway-v2'));if(persisted.shipUpgrades[0].speed!==1)throw Error('save');
+ shipUpgradeSelection=2;purchaseShipUpgrade('jump');if(purchaseShipUpgrade('jump'))throw Error('unowned');shipUpgradeSelection=0;data.coins=0;if(purchaseShipUpgrade('fuel'))throw Error('balance');data.coins=10000;
+ const set=localStorage.setItem;localStorage.setItem=()=>{throw Error('full')};const old=JSON.stringify(data.shipUpgrades),oldCoins=data.coins;shipUpgradePending='jump';if(purchaseShipUpgrade('jump')||data.coins!==oldCoins||JSON.stringify(data.shipUpgrades)!==old)throw Error('rollback');localStorage.setItem=set;save();
+ STORY_COURSES[0]=emptyEditorMap(500);level=0;mode='story';data.skin=0;editorTesting=false;beginRun();setThrottleLever(100);if(throttle!==shipStats(0).speed)throw Error('speed cap');jump();if(Math.abs(vy-shipStats(0).jump)>1e-8)throw Error('jump physics');
+ const maxSpeed=shipSpeedCap();data.shipUpgrades[0].speed=5;if(shipSpeedCap()!==maxSpeed)throw Error('midrun stats changed');
+ beginRun();setThrottleLever(100);if(throttle!==shipStats(0).speed)throw Error('next run stats');
+ y=0;vy=0;grounded=true;speed=6;throttle=6;const f=fuel;step(.01);const expected=fuelDrain(6)/shipStats(0).fuel*.01;if(Math.abs(f-fuel-expected)>1e-6)throw Error('fuel physics');
+ editorTesting=true;$('editorTestPerformance').value='base';if(shipSpeedCap()!==22||shipJumpPower()!==7.8||shipFuelEfficiency()!==1)throw Error('reference editor');$('editorTestPerformance').value='ship';if(shipSpeedCap()!==shipStats(0).speed)throw Error('owned editor');editorTesting=false;
+ beginRun();launchFromRest();time=5;finish(true);if(!data.storyTimes[0].equipment||data.storyTimes[0].equipment.ship!==0)throw Error('record equipment');
+ const backup=validateBackup(backupCapture());if(backup.game.shipUpgrades[0].speed!==5||!backup.game.storyTimes[0].equipment)throw Error('backup');
+ data.shipUpgrades[0].speed=5;showMenu('main');shipUpgradeSelection=0;const cb=data.coins;if(purchaseShipUpgrade('speed')||data.coins!==cb)throw Error('max level');
+}`);
+console.log('PASS: 12 distinct base profiles, five-level growth, per-ship purchase/confirm/max/balance, persistence, failed-save rollback, live speed/jump/fuel physics, frozen run stats, editor profiles, record metadata and backup');

@@ -1,0 +1,113 @@
+{
+  "video": "296165.mp4",
+  "duration": 33.727,
+  "sections": [
+    {
+      "start": 0,
+      "end": 32,
+      "type": "single",
+      "name": "주황 진입 외길",
+      "side": 3
+    },
+    {
+      "start": 32,
+      "end": 56,
+      "type": "split",
+      "name": "중앙 단절과 좌우 주황 분기",
+      "side": 3
+    },
+    {
+      "start": 56,
+      "end": 92,
+      "type": "box_channel",
+      "name": "흰 벽 사이 초록 외길",
+      "side": 3
+    },
+    {
+      "start": 92,
+      "end": 120,
+      "type": "hazard",
+      "name": "진홍 위험판을 넘는 저중력 점프",
+      "side": 3
+    },
+    {
+      "start": 120,
+      "end": 148,
+      "type": "single",
+      "name": "복숭아 연결 외길",
+      "side": 3
+    },
+    {
+      "start": 148,
+      "end": 210,
+      "type": "split",
+      "name": "파랑·흰색 쌍레일과 공중 좌우 전환",
+      "side": 3
+    },
+    {
+      "start": 210,
+      "end": 250,
+      "type": "split",
+      "name": "주황 쌍레일과 왼쪽 착지",
+      "side": 3
+    },
+    {
+      "start": 250,
+      "end": 272,
+      "type": "raised_window",
+      "name": "흰 블록 상단 착지",
+      "side": 3
+    },
+    {
+      "start": 272,
+      "end": 312,
+      "type": "split",
+      "name": "흰색·초록색 분리 레일",
+      "side": 3
+    },
+    {
+      "start": 312,
+      "end": 340,
+      "type": "crossroads",
+      "name": "회색 합류 발판과 오른쪽 전환",
+      "side": 3
+    },
+    {
+      "start": 340,
+      "end": 364,
+      "type": "tunnel",
+      "name": "왼쪽 라벤더 터널과 오른쪽 파란 우회로",
+      "side": 3
+    },
+    {
+      "start": 364,
+      "end": 392,
+      "type": "islands",
+      "name": "세 갈래 복숭아 레일과 단절 점프",
+      "side": 3
+    },
+    {
+      "start": 392,
+      "end": 426,
+      "type": "raised_window",
+      "name": "흰 장애물과 분홍 쌍레일",
+      "side": 3
+    },
+    {
+      "start": 426,
+      "end": 460,
+      "type": "islands",
+      "name": "분홍 단절 레일 점프",
+      "side": 3
+    },
+    {
+      "start": 460,
+      "end": 500,
+      "type": "tunnel",
+      "name": "오른쪽 외길과 라벤더 도착 터널",
+      "side": 3
+    }
+  ],
+  "gravity": "영상 HUD100, 이전400/500보다 긴 체공. 현재 에디터 허용 범위의 최저중력8로 재구성.",
+  "notes": "7열500행, 영상 순서·색상·분기·블록·직선터널을 유지하되 실제 점프 도달거리로 간격 조정. 미세한 대각선은 칸 좌표로 근사. 긴 분홍 레일은 rose, 진홍 위험판은 pink로 구분."
+}

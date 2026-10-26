@@ -1,0 +1,9 @@
+# Introductory playtest summary
+
+Settings → Data → Flight diagnostics now shows 1-1, 1-2 and 1-3 cards with attempts, clears, failures, retries and menu exits. Expand a card for post-failure decisions, the most recent retained launch wait, first diagnostic clear and the three most frequently recorded failure locations. Displayed row numbers are one-based, matching the editor. First-clear cumulative time includes ready/play time, excluding menus, pause and hidden/suspended time.
+
+This is the existing opt-in local dataset, not an audience-wide statistic or a player cohort. Opening the summary does not enable recording or transmit data. Detailed runs remain limited to 20 and map-version summaries to 60 across modes. The latest played version is selected from retained runs, falling back to the last stored version when detailed runs are unavailable. Versions are never combined. Missing launch details are stated explicitly. Export schema 2 and diagnostic clearing retain their existing behavior.
+
+1-3 no longer has a special chapter-transition label. All ordinary Korean completion actions now read “다음 스테이지로 →”; the final course still offers retry. Routing and rewards are unchanged.
+
+Passing checks: intro-study-summary, flight-diagnostics, third-flight-polish and result-report. Cases include empty/partial records, editor exclusion, version separation, revisiting older versions, failure ranking, expired detailed runs, reset, opt-in and uniform labels. Browser QA verified 390px cover cards, native details expansion, 820px comparison layout and the 1-3 completion label. Summary screenshot `qa/intro-study-20261022.jpg` uses visibly marked fictional example data supplied only by the development preview; no examples are shipped in production. Completion screenshot: `qa/next-stage-label-20261022.jpg`.

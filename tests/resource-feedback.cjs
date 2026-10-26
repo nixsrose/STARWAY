@@ -1,0 +1,8 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
+const elements={};const el=id=>elements[id]??(elements[id]={textContent:'',attrs:{},setAttribute(k,v){this.attrs[k]=v}});
+const b={runCoins:0,x:0,y:0,z:4,fuel:50,charge:-1,state:'play',uiWords:{},$:el,tr:s=>s,syncCockpit(){},beginRun(){},step(){if(b.refill){b.fuel=100;b.charge=4}}};vm.createContext(b);vm.runInContext(fs.readFileSync('dist/resource-feedback.js','utf8'),b);b.syncCockpit();assert.equal(el('fuelGauge').attrs['data-alert'],'none');b.fuel=15;b.syncCockpit();assert.equal(el('fuelGauge').attrs['data-alert'],'low');b.fuel=9;b.syncCockpit();assert.equal(el('fuelGauge').attrs['data-alert'],'critical');b.state='pause';b.syncCockpit();assert.equal(el('fuelGauge').attrs['data-alert'],'none');
+b.state='play';b.fuel=90;b.refill=true;b.step(.01);b.syncCockpit();assert.equal(el('fuelChargeCue').textContent,'+10%');assert.equal(el('fuelChargeCue').attrs['data-visible'],'true');b.beginRun();b.syncCockpit();assert.equal(el('fuelChargeCue').textContent,'');console.log('PASS: warning thresholds, pause stops alerts, actual capped refill amount, reset clears charge cue');
+
+b.refill=false;b.state='play';b.step=function(dt){b.runCoins++};
+// Test the wrappers with their original captured step by adding a coin to its fixture.
+vm.runInContext("pickupGlints=[{x:0,z:4,y:.35,life:.28}];fuelChargeAnchor={x:0,z:4};",b);b.state='pause';vm.runInContext('pickupStep(.1)',b);assert.equal(vm.runInContext('pickupGlints[0].life',b),.28);b.beginRun();assert.equal(vm.runInContext('pickupGlints.length',b),0);assert.equal(vm.runInContext('fuelChargeAnchor',b),null);console.log('PASS: pickup effects freeze while paused and reset on retry');

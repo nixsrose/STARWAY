@@ -1,0 +1,18 @@
+const challengeRuleInputs={startFuel:'challengeStartFuel',timeLimit:'challengeTimeLimit',silverTime:'challengeSilverTime',goldTime:'challengeGoldTime',silverCoins:'challengeSilverCoins',goldCoins:'challengeGoldCoins'};
+let challengeRuleError=false;
+function renderChallengeSettings(){const id=editorChallengeId();$('editorChallengeSettings').classList.toggle('hidden',!id);if(!id)return;const rules=normalizeChallengeRules(editorMap.challengeRules,id);for(const [key,input]of Object.entries(challengeRuleInputs))$(input).value=rules[key]===undefined?'':String(rules[key]);for(const label of document.querySelectorAll('[data-challenge-rule]'))label.classList.toggle('hidden',!(label.getAttribute('data-challenge-rule')===id||(label.getAttribute('data-challenge-rule')==='timed'&&(id==='sprint'||id==='reserve'))));challengeRuleError=false;$('challengeSettingsStatus').textContent=id==='sprint'?'짧은 시간일수록 높은 평가: 별 3개 < 별 2개 < 제한 시간.':id==='reserve'?'별 1개는 완주, 별 2·3개는 목표 시간 이내 완주입니다. 연료 보급은 맵에 배치하세요.':'별 3개 목표 수에 맞춰 코인을 배치합니다. 저장 시 부족한 코인은 안전한 도로에 보충됩니다.';if(id==='sprint')$('challengeSettingsStatus').textContent='짧은 시간일수록 높은 평가: 별 3개 < 별 2개 < 제한 시간.';}
+function applyChallengeSettings(){const id=editorChallengeId();if(!id)return true;try{const candidate={};for(const key of Object.keys(normalizeChallengeRules(null,id))){const text=$(challengeRuleInputs[key]).value;if(text==='')throw Error('모든 도전 목표를 입력하세요.');candidate[key]=Number(text);}const rules=normalizeChallengeRules(candidate,id);if(JSON.stringify(rules)!==JSON.stringify(editorMap.challengeRules)){editorSnapshot();editorMap.challengeId=id;editorMap.challengeRules=rules;}challengeRuleError=false;$('challengeSettingsStatus').textContent='설정 변경됨 · 도전 항로에 저장하면 다음 주행부터 적용됩니다.';return true;}catch(error){challengeRuleError=true;$('challengeSettingsStatus').textContent=error.message;challengeSaveMessage(error.message,true);return false;}}
+for(const input of Object.values(challengeRuleInputs))$(input).onchange=applyChallengeSettings;
+const settingsRender=renderEditorGrid;renderEditorGrid=function(...args){const out=settingsRender(...args);renderChallengeSettings();return out;};
+const settingsTarget=$('editorTemplate').onchange;$('editorTemplate').onchange=(...args)=>{const out=settingsTarget?.(...args);renderChallengeSettings();return out;};
+const settingsOpen=$('editorSettingsOpen').onclick;$('editorSettingsOpen').onclick=()=>{const out=settingsOpen();renderChallengeSettings();return out;};
+const settingsSave=$('editorSave').onclick;$('editorSave').onclick=()=>{if(editorChallengeId()&&!applyChallengeSettings()){closeEditorSheets();$('editorSettingsPanel').classList.remove('hidden');return;}return settingsSave();};
+// Capture focused numeric fields before quick-save opens the file sheet.
+const settingsQuickSave=$('editorQuickSave').onclick;$('editorQuickSave').onclick=()=>{if(editorChallengeId()&&!applyChallengeSettings()){closeEditorSheets();$('editorSettingsPanel').classList.remove('hidden');return;}return settingsQuickSave();};
+// Editor runs use the draft's challenge settings, including unsaved numeric fields.
+const settingsTestMap=testEditorMap;testEditorMap=function(...args){
+ if(editorChallengeId()&&!applyChallengeSettings()){closeEditorSheets();$('editorSettingsPanel').classList.remove('hidden');return false;}
+ return settingsTestMap(...args);
+};
+$('editorTest').onclick=()=>testEditorMap();
+const settingsTestBegin=beginRun;beginRun=function(...args){const out=settingsTestBegin(...args);const course=mode==='story'?STORY_COURSES[level]:null;if(editorTesting&&!challengeActive&&course?.challengeId){fuel=normalizeChallengeRules(course.challengeRules,course.challengeId).startFuel;syncCockpit();}return out;};start=beginRun;

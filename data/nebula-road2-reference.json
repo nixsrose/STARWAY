@@ -1,0 +1,99 @@
+{
+  "video": "296166.mp4",
+  "duration": 45.659,
+  "sections": [
+    {
+      "start": 0,
+      "end": 66,
+      "type": "tunnel",
+      "name": "회색 외길의 연속 복숭아 터널",
+      "side": 3
+    },
+    {
+      "start": 66,
+      "end": 112,
+      "type": "split",
+      "name": "분홍·주황 분기와 좌우 직선 터널",
+      "side": 3
+    },
+    {
+      "start": 112,
+      "end": 136,
+      "type": "wall",
+      "name": "중앙 블록 왼쪽 우회",
+      "side": 3
+    },
+    {
+      "start": 136,
+      "end": 160,
+      "type": "crossroads",
+      "name": "초록·주황 연결 발판",
+      "side": 3
+    },
+    {
+      "start": 160,
+      "end": 192,
+      "type": "grid",
+      "name": "갈색 구멍 격자",
+      "side": 3
+    },
+    {
+      "start": 192,
+      "end": 232,
+      "type": "hazard",
+      "name": "초록·진홍 색상 바닥",
+      "side": 3
+    },
+    {
+      "start": 232,
+      "end": 252,
+      "type": "grid",
+      "name": "두 번째 구멍 격자",
+      "side": 3
+    },
+    {
+      "start": 252,
+      "end": 360,
+      "type": "box_channel",
+      "name": "복숭아 기둥과 교대 횡단벽 통로",
+      "side": 3
+    },
+    {
+      "start": 360,
+      "end": 390,
+      "type": "tunnel",
+      "name": "세 갈래 복숭아 터널",
+      "side": 3
+    },
+    {
+      "start": 390,
+      "end": 424,
+      "type": "hazard",
+      "name": "갈색 도로의 진홍 위험칸",
+      "side": 3
+    },
+    {
+      "start": 424,
+      "end": 446,
+      "type": "tunnel",
+      "name": "두 번째 세 갈래 터널",
+      "side": 3
+    },
+    {
+      "start": 446,
+      "end": 470,
+      "type": "crossroads",
+      "name": "회색·초록·주황 합류",
+      "side": 3
+    },
+    {
+      "start": 470,
+      "end": 500,
+      "type": "tunnel",
+      "name": "복숭아 외길과 도착 터널",
+      "side": 3
+    }
+  ],
+  "gravity": "원작 HUD1700. 현재 중력 범위8–30의 고중력30 적용.",
+  "notes": "영상 순서와 색상·구멍·기둥·횡단벽·직선터널을 7열500행에 재구성. 정확한 치수는 추정이며 통로 폭은 기체 충돌폭 기준 조정. 터널 주변 추가 박스는 이전 합의대로 없음."
+}

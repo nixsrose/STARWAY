@@ -1,0 +1,23 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';
+const worker=await import('data:text/javascript;base64,'+Buffer.from(fs.readFileSync('worker/index.mjs','utf8').replace("import {normalizeBackground} from '../shared/background.mjs';",fs.readFileSync('shared/background.mjs','utf8').replace('export function','function')).replace("import {normalizeFinish,mapFinishZ,mapFinishReached,flightContacts,normalizeMapExtras,hazardTunnelRoofAt} from '../shared/finish.mjs';",fs.readFileSync('shared/finish.mjs','utf8').replace(/export /g,'')).replace("import {ASSETS} from './assets.mjs';",'const ASSETS={};')).toString('base64'));
+const raw={title:'Finish test',tiles:Array.from({length:64},()=>[0,0,1,1,1,0,0]),finish:{row:18,lane:3,type:'road'}};
+const trace=Array.from({length:55},(_,i)=>{const t=(i+1)/60;return [t,2+18*t,0,0,18]});
+const road=worker.validateMap(raw);assert.deepEqual(road.finish,raw.finish);assert.equal(worker.validateTrace(road,trace,917,1000),true);
+const tunnel=worker.validateMap({...raw,finish:{row:18,lane:3,type:'tunnel'},ceilings:Array.from({length:64},(_,i)=>i===18?1.15:0),tunnelCenters:{18:[0]}});assert.equal(worker.validateTrace(tunnel,trace,917,1000),true);
+assert.throws(()=>worker.validateTrace(road,trace.slice(0,-1),900,1000),/완주/);
+assert.throws(()=>worker.validateMap({...raw,finish:{row:18,lane:0,type:'road'}}),/FINISH/);
+assert.throws(()=>worker.validateMap({...raw,finish:{row:18,lane:3,type:'tunnel'}}),/FINISH/);
+console.log('PASS creator server finish metadata retained; road and tunnel custom completion accepted; incomplete/invalid finish rejected');
+const multi=worker.validateMap({...raw,finish:{row:50,lane:4,type:'road'},finishes:[raw.finish,{row:50,lane:4,type:'road'}],gravityGates:[{row:8,lane:3,gravity:500}],medalTargets:{gold:8,silver:12}});
+assert.equal(multi.finishes.length,2);assert.equal(multi.gravityGates[0].gravity,500);assert.equal(multi.medalTargets.gold,8);assert.equal(worker.validateTrace(multi,trace,917,1000),true);
+assert.throws(()=>worker.validateMap({...raw,gravityGates:[{row:8,lane:3,gravity:600}]}));assert.throws(()=>worker.validateMap({...raw,medalTargets:{gold:12,silver:8}}));
+console.log('PASS multiple finish routes accept the earlier finish, gravity devices and medal metadata retained, invalid settings rejected');
+
+const noJump=worker.validateMap({...raw,noJumpZones:[{row:8,lane:3},{row:9,lane:3}]});assert.equal(noJump.noJumpZones.length,2);assert.equal(worker.validateTrace(noJump,trace,917,1000),true);
+const illegal=trace.map(s=>s.slice());for(const s of illegal)if(s[0]>=.35&&s[0]<.5)s[3]=.1;assert.throws(()=>worker.validateTrace(noJump,illegal,917,1000),/점프 불가/);
+const incoming=trace.map(s=>s.slice());for(const s of incoming)if(s[0]>=.3&&s[0]<.5)s[3]=.1;assert.equal(worker.validateTrace(noJump,incoming,917,1000),true);
+assert.throws(()=>worker.validateMap({...raw,noJumpZones:[{row:8,lane:0}]}));console.log('PASS no-jump metadata, grounded traversal, incoming airborne traversal, forbidden takeoff and invalid placements');
+const shell={...raw,ceilings:Array.from({length:64},(_,r)=>r>=8&&r<13?1.15:0),tunnelCenters:Object.fromEntries(Array.from({length:5},(_,i)=>[i+8,[0]]))};
+const hazardShell=worker.validateMap({...shell,hazardTunnels:Array.from({length:5},(_,i)=>({row:i+8,lane:3}))});assert.equal(hazardShell.hazardTunnels.length,5);assert.equal(worker.validateTrace(hazardShell,trace,917,1000),true);
+const roofTrace=trace.map(s=>{const t=s[0],height=t<=.61?Math.min(1.27,Math.max(0,(t-.12)*8)):Math.max(0,1.27-(t-.61)*8);return [s[0],s[1],s[2],height,s[4]];});assert.equal(worker.validateTrace(worker.validateMap(shell),roofTrace,917,1000),true);assert.throws(()=>worker.validateTrace(hazardShell,roofTrace,917,1000),/위험 터널/);
+assert.throws(()=>worker.validateMap({...raw,hazardTunnels:[{row:8,lane:3}]}));console.log('PASS hazard tunnel metadata, safe interior trace, normal roof traversal, forbidden hazard roof and invalid geometry');

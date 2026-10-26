@@ -1,0 +1,336 @@
+{
+  "checkedAt": "2026-10-26T12:46:37.618Z",
+  "game": {
+    "build": "5f85c3bec68c",
+    "css": "8bde1e8fb1ec",
+    "version": 397
+  },
+  "passed": 54,
+  "total": 54,
+  "results": [
+    {
+      "name": "startup-language",
+      "passed": true,
+      "seconds": 2.99,
+      "output": "PASS first-run gate, invalid/repeated choices, English lobby, saved choice reload, settings language change and progress preserved\nPASS all four first-run choices, language cycling, reload persistence, zh-CN tag and storage-unavailable entry\nPASS control descriptions, ghost refresh, pause/resume, save failure, purchase confirmation and reward prompts\n"
+    },
+    {
+      "name": "boot",
+      "passed": true,
+      "seconds": 0.94,
+      "output": "PASS: legacy UI hidden before CSS/JS, reveal only after final main menu and first draw, versioned CSS\nPASS: real script order, first frame, road/ship drawing, start and continuing animation\nPASS: ship foreshortening, fixed forward heading on left/right, rising/descending pitch\nPASS: projected longitudinal shear, horizontal transverse wing axis\nPASS: solid hull height independent of ground projection, horizontal wings, all skin meshes\nPASS: all ship skins remain finite and same perspective at camera-height crossing and jump/fall altitudes\nPASS: connected box internal faces removed; step exterior preserved\nPASS: foreground coin stays visible, actually occluded distant coin hidden\nPASS: below-road falling ship drawn behind surfaces, airborne ship above surfaces\nPASS: deferred fall retains true failure point, cause labels, ready-state retry and story/endless parent navigation\nPASS: completion record deltas, best-only persistence, no auto advance, same-course retry, manual next and final7-3\nPASS: endless starting best snapshot, new record delta, remaining distance, tie and repeated-result-action guard\n"
+    },
+    {
+      "name": "backup",
+      "passed": true,
+      "seconds": 0.52,
+      "output": "PASS: explicit map confirmation/cancel, per-stage previous map, full backup/restore/undo, invalid file rejection, transaction rollback, save failure notice,7-3 record persistence\nPASS: original reset is confirmed and can restore the previous custom map\n"
+    },
+    {
+      "name": "storage-codec",
+      "passed": true,
+      "seconds": 0.75,
+      "output": "PASS uploaded170-row map: old raw save exceeds quota; compact migration/save/reload succeeds, unrelated progress preserved, plaintext export, Unicode/unaliased rows, SecurityError and quota rollback. Before=133532chars; after=35558chars\n"
+    },
+    {
+      "name": "ship-upgrades",
+      "passed": true,
+      "seconds": 0.39,
+      "output": "PASS: 12 distinct base profiles, five-level growth, per-ship purchase/confirm/max/balance, persistence, failed-save rollback, live speed/jump/fuel physics, frozen run stats, editor profiles, record metadata and backup\n"
+    },
+    {
+      "name": "upgrade-feedback",
+      "passed": true,
+      "seconds": 0.34,
+      "output": "PASS upgrade before/after, success feedback, shortfall quest route, MAX, world display scale and four languages\n"
+    },
+    {
+      "name": "quests",
+      "passed": true,
+      "seconds": 0.36,
+      "output": "PASS: KST reset, three daily rewards, lifetime preservation, existing ships/upgrades, duplicate/locked claims, save rollback, real distance/finish tracking, editor/creator exclusions and backup\n"
+    },
+    {
+      "name": "quest-claim-all",
+      "passed": true,
+      "seconds": 0.34,
+      "output": "PASS: daily combined amount, lifetime all-achieved tiers, active tab isolation, duplicate prevention, notification cleanup, no collection progress leakage, failed-save rollback and retry\n"
+    },
+    {
+      "name": "quest-flow",
+      "passed": true,
+      "seconds": 0.41,
+      "output": "PASS claimable-first order, claimed-last, original reward indexes, duplicate protection, upgrade/shop/story navigation, no automatic spending/run, four languages and save rollback\n"
+    },
+    {
+      "name": "notifications",
+      "passed": true,
+      "seconds": 0.32,
+      "output": "PASS: real notification sources, daily/total/badge destination, reward cleanup, read state/deduplication, invalid target and backup\n"
+    },
+    {
+      "name": "story-selection",
+      "passed": true,
+      "seconds": 0.52,
+      "output": "PASS next uncleared, all-cleared state, selected course/scroll persisted across menus and reload, four-language goal visibility, native pan styles\nPASS selected best/medal, first-clear/gold states, custom thresholds, rounded gap, four-language map features and post-result scroll restoration\n"
+    },
+    {
+      "name": "story-release-scope",
+      "passed": true,
+      "seconds": 0.53,
+      "output": "PASS7-3 final/hidden navigation and hidden progress/maps survive reload\n"
+    },
+    {
+      "name": "endless-progression",
+      "passed": true,
+      "seconds": 7.57,
+      "output": "PASS180 random partial excerpts:21-source coverage, early9-only pool, exact bounds/geometry/metadata, contiguous compatible seams, no long connector roads\nPASS30 randomized restarts with safe source-lane spawns and zero distance;21 direct seams physically traversed at max cruise\nPASS meter distance retained and right-aligned in endless; story course label and layout restored\n"
+    },
+    {
+      "name": "story-briefing",
+      "passed": true,
+      "seconds": 0.36,
+      "output": "PASS equipped stats, upgrade round trip, selected stage/scroll retention, refreshed stats, live map features/medal settings and four-language tips\n"
+    },
+    {
+      "name": "retry-route-preview",
+      "passed": true,
+      "seconds": 0.52,
+      "output": "PASS failure capture, ready-only map, row marker, contact-specific advice in four languages, launch/dismiss/menu hide, edited map/stage invalidation and endless exclusion\n"
+    },
+    {
+      "name": "failure-cues",
+      "passed": true,
+      "seconds": 0.36,
+      "output": "PASS actual block/tunnel/hazard cause capture, four-language reports, frozen fall anchor, effect pause, fuel instrument expiry, retry/menu reset\nPASS surface-specific advice in four languages and hazard roof report uses interior-passage guidance\n"
+    },
+    {
+      "name": "challenge-failure-fx",
+      "passed": true,
+      "seconds": 0.46,
+      "output": "PASS six challenge collision effects, visible intermediate frames, delayed settlement once, FX pause/resume, fall sequence, menu cancellation, fuel/timeout, normal story effects\n"
+    },
+    {
+      "name": "challenge-settings",
+      "passed": true,
+      "seconds": 0.86,
+      "output": "PASS editable time thresholds, 13-second two-star result, timeout, fuel capacity/time targets, configurable coin count, UI validation, restart, backup, reset/previous-map rules\nPASS time boundary stars independent of fuel, legacy map rules, invalid times, live refuel, fuel depletion\n"
+    },
+    {
+      "name": "challenge-map-backup",
+      "passed": true,
+      "seconds": 0.47,
+      "output": "PASS extracted maps/settings become defaults without importing progress; overrides preserved; partial map restore/previous maps/storage-failure rollback\nPASS actual imported maps start with restored rules/fuel and run finite physics; full human clears remain separate\n"
+    },
+    {
+      "name": "challenge-test-fuel",
+      "passed": true,
+      "seconds": 0.47,
+      "output": "PASS unsaved 55% editor test and gauge, page-zero/mid-page tests, repeated tests, fuel drain, no quest/reward credit, normal story 100%, other challenge drafts, invalid-value rejection\n"
+    },
+    {
+      "name": "challenge-rewards",
+      "passed": true,
+      "seconds": 1.22,
+      "output": "PASS 0/3/6/9 thresholds, existing-save migration, badge rendering, locked purchase rejection, coin-free equip, no forced loadout change, progress UI, persistence and backup\n"
+    },
+    {
+      "name": "editor-course-rules",
+      "passed": true,
+      "seconds": 0.65,
+      "output": "PASS story medal save/UI/ranking/reload, gravity modal cancel/edit, persistence, crossing/lane/height/reset, multiple finish routes/removal, resize and invalid metadata\n"
+    },
+    {
+      "name": "no-jump-zones",
+      "passed": true,
+      "seconds": 0.57,
+      "output": "PASS no-jump placement/removal, jump and buffer blocking, lane/exit recovery, incoming flight preserved, pause/retry/endless isolation, mirrored copy, resize, backup/save/reload, invalid cells\n"
+    },
+    {
+      "name": "jump-allow-zones",
+      "passed": true,
+      "seconds": 0.54,
+      "output": "PASS enable zone persistence/release, wrong lane, swept entry, retry/pause/endless, copy/import/resize/remove, save/backup/reload\n"
+    },
+    {
+      "name": "hazard-tunnels",
+      "passed": true,
+      "seconds": 0.58,
+      "output": "PASS hazard tunnel placement, interior passage, roof landing/walking explosion and delayed result, overhead flight, adjacent normal roof, removal/normal repaint/erase, mirrored copy, resize, backup and reload\n"
+    },
+    {
+      "name": "tunnel-diagonal-landing",
+      "passed": true,
+      "seconds": 0.61,
+      "output": "PASS normal diagonal roof landings from both sides, hazard roof explosion, upward shell collision, actual 5-2 sections: 1\n"
+    },
+    {
+      "name": "tunnel-roof-fall",
+      "passed": true,
+      "seconds": 0.51,
+      "output": "PASS both roof edges fall, straight descent beside shell, inward and adjacent collisions, interior walls and stable roof support\n"
+    },
+    {
+      "name": "tunnel-grid-alignment",
+      "passed": true,
+      "seconds": 0.61,
+      "output": "PASS 4-2 grid alignment, per-cell removal/neighbor preservation/undo, all tunnel deletion, saved reload, symmetric legacy snapping and new tunnel erase\n"
+    },
+    {
+      "name": "tall-block-occlusion",
+      "passed": true,
+      "seconds": 1.09,
+      "output": "PASS continuous opaque tall-block side across moving row seams, correct road occlusion and material boundary preservation\nPASS camera-aligned long block hides the adjacent road through the near plane\nPASS both sides and 42 near-camera positions across cover, phone and unfolded viewport sizes\n"
+    },
+    {
+      "name": "distance-origin",
+      "passed": true,
+      "seconds": 0.33,
+      "output": "PASS: zero at launch, actual traveled distance, result/best consistency, one-time old backup conversion and unchanged story clock\n"
+    },
+    {
+      "name": "speed-units",
+      "passed": true,
+      "seconds": 0.39,
+      "output": "PASS: displayed 1000m in ~4.76s at 210m/s, HUD and lever show756 km/h, unchanged movement physics\n"
+    },
+    {
+      "name": "boost-pad",
+      "passed": true,
+      "seconds": 0.41,
+      "output": "PASS boost immediate 800km/h, 3-second duration and distance, throttle return, pause, refresh, slow pad and retry\n"
+    },
+    {
+      "name": "configurable-speed-pads",
+      "passed": true,
+      "seconds": 0.49,
+      "output": "PASS pad speed validation, 1000kmh airborne boost, custom slow/priority, pause/retry, paint, mirrored copy, JSON round trip, erase cleanup and zero slow\n"
+    },
+    {
+      "name": "speed-feedback",
+      "passed": true,
+      "seconds": 0.38,
+      "output": "PASS speed feedback duration, lever target updates, pause freeze, four languages, slow priority and retry/menu cleanup\n"
+    },
+    {
+      "name": "airborne-devices",
+      "passed": true,
+      "seconds": 0.36,
+      "output": "PASS airborne boost/slow/gravity/no-jump/release, lane isolation, single row trigger, flight preserved and unchanged fuel pickup\n"
+    },
+    {
+      "name": "pc-keyboard",
+      "passed": true,
+      "seconds": 0.39,
+      "output": "PASS PC arrows steer/start/accelerate/brake/stop, key release, Space jumps once, pause/menu/editor/form isolation, no-jump zones and controls help\n"
+    },
+    {
+      "name": "steering-sensitivity",
+      "passed": true,
+      "seconds": 0.59,
+      "output": "PASS sensitivity scales buttons/joystick/keyboard, persistence/reload, backup bounds/legacy default/reset; early playtest UI removed, diagnostics and backup retained\n"
+    },
+    {
+      "name": "low-throttle",
+      "passed": true,
+      "seconds": 0.39,
+      "output": "PASS continuous low throttle, 100/1kmh start, zero stays ready, slow pad never raises low target, keyboard gradual start\n"
+    },
+    {
+      "name": "flight-diagnostics",
+      "passed": true,
+      "seconds": 0.9,
+      "output": "PASS opt-in, row buckets, stalls, pause exclusion, failure/clear capture, post-result exclusion, retry cap and local deletion\nPASS launch delay, active-only time, failure/decision dedup, retry location, first clear, aggregate reload and map revision separation\n"
+    },
+    {
+      "name": "flight-localization",
+      "passed": true,
+      "seconds": 0.36,
+      "output": "PASS challenge goals/rewards/HUD/failures in EN/JA/ZH, live numeric values, Korean fallback and user map titles preserved\n"
+    },
+    {
+      "name": "progress-localization",
+      "passed": true,
+      "seconds": 0.06,
+      "output": "PASS quest/notification templates, number preservation, all badge names/conditions in EN/JA/ZH, Korean source fallback\n"
+    },
+    {
+      "name": "hangar-localization",
+      "passed": true,
+      "seconds": 0.08,
+      "output": "PASS hangar/menu dictionary completeness, numeric labels, ship names, confirmation messages and Korean fallback\nPASS saved-language initial cache refresh and JA → EN → ZH → KO round trip\n"
+    },
+    {
+      "name": "hidden-localization-work",
+      "passed": true,
+      "seconds": 0.13,
+      "output": "{\"check\":\"60 UI refreshes with populated hidden editor/menu\",\"beforeTextVisits\":360600,\"afterTextVisits\":600,\"reductionPercent\":99.83,\"note\":\"Deterministic work-count fixture; not device FPS.\"}\nPASS visible flight labels, hidden panel omission, ready state and fresh editor/pause translation\n"
+    },
+    {
+      "name": "performance",
+      "passed": true,
+      "seconds": 1.24,
+      "output": "PASS: static-cache reuse/pixel parity, fold pauses without progress loss, cleared inputs, background freeze/no catch-up, explicit fall resume\nPASS: idle rendering limited to about12.5fps and hidden pages do not render\nPASS: repeated pagehide/blur/freeze→pageshow/focus/resume preserves ready, play, fall and explosion; no stuck input, catch-up or automatic resume\n"
+    },
+    {
+      "name": "render-frame-cache",
+      "passed": true,
+      "seconds": 3.37,
+      "output": "PASS exact renderer pixel parity at 40 positions across four chapters, map integrity, frame-local cache cleanup\n"
+    },
+    {
+      "name": "parallel-tunnel-performance",
+      "passed": true,
+      "seconds": 0.8,
+      "output": "PASS parallel tunnel draw calls 886 → 464; full-detail batching pixel delta 0.00146; lane-following detail and map integrity\n"
+    },
+    {
+      "name": "second-flight-guide",
+      "passed": true,
+      "seconds": 0.67,
+      "output": "PASS tutorial appears only on 1-1; other 29 story stages and retired practice replay stay quiet\n"
+    },
+    {
+      "name": "reported-render-regressions",
+      "passed": true,
+      "seconds": 0.48,
+      "output": "PASS continuous finite tunnel occlusion, dense-ray agreement, mixed corridor draw order, map integrity and 1-1-only tutorial\n"
+    },
+    {
+      "name": "challenge-fixed-profile",
+      "passed": true,
+      "seconds": 0.38,
+      "output": "PASS fixed Scout physics/appearance independent of ownership/upgrades, story restoration and old-record archive with reward preservation\n"
+    },
+    {
+      "name": "challenges",
+      "passed": true,
+      "seconds": 1.48,
+      "output": "sprint {\"state\":\"win\",\"time\":18.55833333333292,\"z\":275.5000000000003,\"fuel\":47.85644514767844,\"coins\":0}\nreserve {\"state\":\"win\",\"time\":16.674999999999695,\"z\":165.50000000000296,\"fuel\":36.644509493671954,\"coins\":0}\nprecision {\"state\":\"win\",\"time\":12.55833333333326,\"z\":185.50000000000028,\"fuel\":65.10644514767843,\"coins\":10}\nfast sprint {\"state\":\"win\",\"time\":12.75833333333325,\"z\":275.5333333333346,\"coins\":0}\nfast reserve {\"state\":\"win\",\"time\":7.758333333333509,\"z\":165.53333333374763,\"coins\":0}\nfast precision {\"state\":\"win\",\"time\":8.666666666666815,\"z\":185.51666666669274,\"coins\":10}\nPASS challenge start, equipment, rewards once, quest clears, story isolation, restore, timeout, save rollback, three full legacy-fixture physics courses\n"
+    },
+    {
+      "name": "coin-visibility-sweep",
+      "passed": true,
+      "seconds": 0.59,
+      "output": "[{\"x\":-1,\"changes\":1},{\"x\":-0.5,\"changes\":1},{\"x\":0,\"changes\":1},{\"x\":0.5,\"changes\":1},{\"x\":1,\"changes\":1}]\n"
+    },
+    {
+      "name": "story-coins",
+      "passed": true,
+      "seconds": 0.43,
+      "output": "[{\"stage\":\"1-1\",\"coins\":8,\"normalized\":8},{\"stage\":\"1-2\",\"coins\":13,\"normalized\":13},{\"stage\":\"1-3\",\"coins\":8,\"normalized\":8},{\"stage\":\"2-1\",\"coins\":12,\"normalized\":12},{\"stage\":\"2-2\",\"coins\":15,\"normalized\":15},{\"stage\":\"2-3\",\"coins\":8,\"normalized\":8},{\"stage\":\"3-1\",\"coins\":12,\"normalized\":12},{\"stage\":\"3-2\",\"coins\":12,\"normalized\":12},{\"stage\":\"3-3\",\"coins\":9,\"normalized\":9},{\"stage\":\"4-1\",\"coins\":11,\"normalized\":11},{\"stage\":\"4-2\",\"coins\":16,\"normalized\":16},{\"stage\":\"4-3\",\"coins\":16,\"normalized\":16},{\"stage\":\"5-1\",\"coins\":14,\"normalized\":14},{\"stage\":\"5-2\",\"coins\":16,\"normalized\":16},{\"stage\":\"5-3\",\"coins\":14,\"normalized\":14},{\"stage\":\"6-1\",\"coins\":16,\"normalized\":16},{\"stage\":\"6-2\",\"coins\":10,\"normalized\":10},{\"stage\":\"6-3\",\"coins\":12,\"normalized\":12},{\"stage\":\"7-1\",\"coins\":7,\"normalized\":7},{\"stage\":\"7-2\",\"coins\":16,\"normalized\":16},{\"stage\":\"7-3\",\"coins\":11,\"normalized\":11},{\"stage\":\"8-1\",\"coins\":6,\"normalized\":6},{\"stage\":\"8-2\",\"coins\":8,\"normalized\":8},{\"stage\":\"8-3\",\"coins\":8,\"normalized\":8},{\"stage\":\"9-1\",\"coins\":6,\"normalized\":6},{\"stage\":\"9-2\",\"coins\":8,\"normalized\":8},{\"stage\":\"9-3\",\"coins\":8,\"normalized\":8},{\"stage\":\"10-1\",\"coins\":8,\"normalized\":8},{\"stage\":\"10-2\",\"coins\":8,\"normalized\":8},{\"stage\":\"10-3\",\"coins\":10,\"normalized\":10}]\nPASS story coin preservation, empty-map repair, safe placement, editor brush and runtime\n"
+    },
+    {
+      "name": "random-coins",
+      "passed": true,
+      "seconds": 0.63,
+      "output": "PASS 30-stage randomized safe placement, run/retry variation, immutable maps and fixed challenge coins\n"
+    },
+    {
+      "name": "all-stage-flight-smoke",
+      "passed": true,
+      "seconds": 1.57,
+      "output": "PASS 21-stage scripted-flight smoke: simulation finite, map data unchanged; clears 1/21 (one fixed timing, not a solvability test)\n"
+    }
+  ]
+}
